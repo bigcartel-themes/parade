@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.name }} | {{ store.name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+    {{ head_content }}
+  </head>
+
+  <body id="{{ page.permalink }}" class="{{ page.category }}">
+    {% if theme.flash_message != blank %}
+      <div class="flash-message">
+        <div class="flash-message-text">This is a cool message!</div>
+        <div class="flash-message-close">X</div>
+      </div>
+    {% endif %}
+    <header class="header-wrapper layout-header">
+      <div class="primary-header">
+        <div class="header-left">
+          {% if page.full_url contains '/product/' or page.category == 'custom' or page.permalink == 'contact' %}
+            <button class="hamburger hamburger--squeeze is-active return-home-link" type="button">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          {% else %}
+            <button class="hamburger hamburger--squeeze open-page-nav" type="button">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          {% endif %}
+        </div>
+        
+        <div class="header-center">
+          {% if page.full_url contains '/products' or page.full_url contains '/category' or page.permalink == 'home' %}
+            <div class="products-page-title">
+              {% if page.permalink == 'home' or page.full_url contains '/products' %}
+                <a href="#" class="open-category-nav">View — All</a>
+              {% else %}
+                <a href="#" class="open-category-nav">View — {{ page.name }}</a>
+              {% endif %}
+            </div>
+          {% elsif page.full_url contains '/product/' %}
+            {% case product.status %}
+              {% when 'active' %}
+                {% assign product_status = 'Active' %}
+              {% when 'sold-out' %}
+                {% assign product_status = 'Sold Out' %}
+              {% when 'coming-soon' %}
+                {% assign product_status = 'Coming Soon' %}
+            {% endcase %}
+            <div class="product-page-title" data-cursor-title="{{ product_status }}" data-product-status="{{ product.status }}">{{ page.name }}</div>
+          {% endif %}
+        </div>
+        
+        <div class="header-right">
+          <div class="open-cart">
+            <a class="cart-link{% if cart.item_count == 0 %} hidden{% endif %}" href="/cart" title="View Cart">{{ cart.item_count }}</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="secondary-header">
+        {% if page.full_url contains '/product/' %}
+          <div class="product-page-subtitle"><a href="#" class="open-product-info">View Info</a></div>
+        {% else %}
+          {% if theme.logo != blank %}
+            <a class="store-link" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 500, 200 }}"></a>
+          {% else %}
+            <a class="store-link" href="/" title="{{ store.name | escape }}">{{ store.name }}</a>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </header>
+    
+    <div class="main">
+      {% if page.category == 'custom' or page.permalink == 'contact' %}
+        <div class="page-nav-menu">
+          
+          <ul class="pages-links link-list">
+            {% for page in pages.all %}
+              <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
+            {% endfor %}
+            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact" title="Contact">Contact</a></li>
+          </ul>
+          
+          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+            <ul class="social-links link-list">
+              {% if theme.instagram_url != blank %}
+                <li><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+              {% endif %}
+              
+              {% if theme.twitter_url != blank %}
+                <li><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+              {% endif %}
+              
+              {% if theme.facebook_url != blank %}
+                <li><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+              {% endif %}
+      
+              {% if theme.pinterest_url != blank %}
+                <li><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+              {% endif %}
+              
+              {% if theme.tumblr_url != blank %}
+                <li><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+              {% endif %}
+              
+              {% if store.website != blank %}
+                <a href="{{ store.website }}">Back to site</a>
+              {% endif %}
+            </ul>
+          {% endif %}
+  
+          <div class="credit">{{ bigcartel_credit }}</div>
+          
+        </div>
+      
+      
+        {% if page.permalink == 'contact' %}
+          {{ page_content }}
+        {% else %}
+          <div class="custom-page-content">{{ page_content | paragraphs }}</div>
+        {% endif %}
+        
+        
+        <div class="empty-container"></div>
+      {% else %}
+        {{ page_content }}
+      {% endif %}
+      <div class="dark-overlay"></div>
+    </div>
+    
+    
+    
+    
+    {% if page.permalink == 'home' or page.permalink == 'product' %}
+      <div class="intro-overlay">
+        <div class="intro-text">
+          
+          {% if page.permalink == 'home' %}
+            {% if theme.logo != blank %}
+              <img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 500, 200 }}">
+            {% else %}
+              {{ store.name }}
+            {% endif %}
+          {% elsif page.permalink == 'product' %}
+            {{ page.name }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    
+    
+    
+    
+    <div class="full-screen-overlay page-nav-overlay">
+      <div class="overlay-header">
+        <button class="hamburger hamburger--squeeze close-page-nav-overlay" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+      <div class="overlay-content">
+        <div class="page-nav-menu">
+          <ul class="pages-links link-list">
+            {% for page in pages.all %}
+              <li>{{ page | link_to }}</li>
+            {% endfor %}
+            <li><a href="/contact" title="Contact">Contact</a></li>
+          </ul>
+        
+          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+            <ul class="social-links link-list">
+              {% if theme.instagram_url != blank %}
+                <li><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+              {% endif %}
+              
+              {% if theme.twitter_url != blank %}
+                <li><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+              {% endif %}
+              
+              {% if theme.facebook_url != blank %}
+                <li><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+              {% endif %}
+      
+              {% if theme.pinterest_url != blank %}
+                <li><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+              {% endif %}
+              
+              {% if theme.tumblr_url != blank %}
+                <li><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+              {% endif %}
+              
+              {% if store.website != blank %}
+                <a href="{{ store.website }}">Back to site</a>
+              {% endif %}
+            </ul>
+          {% endif %}
+  
+          <div class="credit">{{ bigcartel_credit }}</div>
+        </div>
+        <div class="custom-page-content custom-page-overlay"></div>
+        
+        <div class="empty-container"></div>
+      </div>
+    </div>
+    
+    {% if page.permalink == 'home' or page.permalink == 'products' %}
+      <div class="full-screen-overlay category-nav-overlay">
+        <div class="overlay-header">
+          <button class="hamburger hamburger--squeeze close-category-nav-overlay" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+          <div class="overlay-title">Select a category</div>
+        </div>
+        
+        <div class="overlay-content centered-content">
+          {% if categories.active != blank %}
+            <div class="categories-list">
+              <ul class="dropdown-links">
+                <li class="category-link"><a href="/products" title="Products">All Products</a></li>
+                {% for category in categories.active %}
+                  <li class="category-link">{{ category | link_to }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="cursor"><div class="cursor-text"><div class="cursor-text-price"></div><div class="cursor-text-caption">View</div></div></div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ 'api' | theme_js_url }}"></script>
+    <script src="{{ theme | theme_js_url }}"></script>
+  </body>
+</html>
