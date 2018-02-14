@@ -1,0 +1,474 @@
+@import 'variables'
+
+*
+  box-sizing: border-box
+  cursor: none !important
+  
+html
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  height: 100%
+  min-height: 100%
+  position: relative
+  
+body
+  background-color: $background-color
+  color: $text-color
+  cursor: none !important
+  font-family: $primary-font
+  font-size: 14px
+  height: 100%
+  line-height: 1
+  margin: 0
+  padding: 0
+  
+  &.overlay-open
+    overflow: hidden
+  
+  *
+    cursor: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), auto
+  
+  &.maintenance-page
+    cursor: default
+    text-align: center
+    
+    .maintenance-container
+      +flexbox
+      +align-items(center)
+      +justify-content(center)
+      height: 100%
+    
+    h1
+      font-size: 56px
+      
+    p
+      font-size: 24px
+      
+    .maintenance-social-links
+      font-size: 16px
+      
+      a
+        display: block
+        padding: 4px 10px
+    
+    *
+      cursor: default
+
+a
+  color: $text-color
+  text-decoration: none
+  
+ol, ul
+  list-style: none
+  margin: 0
+  padding: 0
+
+.errors
+  color: $error-text
+  font-family: $primary-font
+  font-size: 16px
+  line-height: 20px
+  margin-bottom: 40px
+  text-align: center
+    
+header
+  background-color: transparent
+  padding-left: 7vw
+  padding-right: 7vw
+  position: fixed
+  width: 100%
+  z-index: 97
+  
+  &.overlay-header
+    padding-left: 0
+    padding-right: 0
+    position: relative
+  
+  .primary-header
+    +flexbox
+    +align-items(center)
+    +justify-content(space-between)
+    padding: 50px 0 15px
+    
+  .secondary-header
+    text-align: center
+  
+  .header-center
+    text-align: center
+    
+  .store-link
+    display: inline-block
+    font-size: 56px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 32px
+    
+  .cart-link
+    background: $button-background-color
+    border-radius: 100%
+    color: $button-text-color
+    display: block
+    font-size: 15px
+    padding: 10px 15px
+    
+    &.expanded
+      +animation(growUp 1.5s .1s)
+    
+    &.hidden
+      opacity: 0
+      visibility: hidden
+      
+@keyframes growUp
+  0%
+    +transform(scale(1))
+  
+  50%
+    +transform(scale(1.5))
+  
+  100%
+    +transform(scale(1))
+       
+#contact .secondary-header, .custom .secondary-header
+  position: relative
+  margin: 0 auto
+  max-width: 66%
+  top: -40px
+
+.open-category-nav
+  display: block
+  font-size: 16px
+  
+.hamburger
+  display: inline-block
+  cursor: pointer
+  transition-property: all
+  transition-duration: 0.15s
+  transition-timing-function: linear
+  font: inherit
+  color: inherit
+  text-transform: none
+  background-color: transparent
+  border: 0
+  outline: 0
+  margin: 0
+  overflow: visible
+  
+  &:hover
+    opacity: 0.7
+
+  .hamburger-box
+    width: 40px
+    height: 24px
+    display: inline-block
+    position: relative
+
+.hamburger-inner
+  background-color: transparent
+  display: block
+  top: 50%
+  margin-top: -2px
+  
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after
+  width: 40px
+  height: 2px
+  background-color: $text-color
+  border-radius: 2px
+  position: absolute
+  transition-property: transform
+  transition-duration: 0.15s
+  transition-timing-function: ease
+  
+.hamburger-inner
+  background-color: transparent
+
+.hamburger-inner::before, .hamburger-inner::after
+  content: ""
+  display: block
+  
+.hamburger-inner::before
+  top: 0
+
+.hamburger-inner::after
+  bottom: -10px
+  
+.hamburger--squeeze .hamburger-inner 
+  transition-duration: 1s
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+  
+.hamburger--squeeze .hamburger-inner::before
+  transition: top 1s ease, opacity 1s ease
+    
+.hamburger--squeeze .hamburger-inner::after
+  transition: bottom 1s ease, transform 1s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+.hamburger--squeeze.is-active .hamburger-inner
+  transform: rotate(45deg)
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+  background-color: $text-color
+  
+.hamburger--squeeze.is-active .hamburger-inner::before
+  top: 0
+  opacity: 0
+  transition: top 1s ease, opacity 1s ease
+    
+.hamburger--squeeze.is-active .hamburger-inner::after
+  bottom: 0
+  transform: rotate(-90deg)
+  transition: bottom 1s ease, transform 1s cubic-bezier(0.215, 0.61, 0.355, 1)
+
+.main
+  
+  margin: 0 auto
+  padding: 50px 7vw
+  position: relative
+  width: 100%
+  
+.page-nav-menu
+  flex: 1 0 200px
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+  
+.custom .main, #contact .main
+  +flexbox
+  font-size: 24px
+  line-height: 40px
+  padding-top: 200px
+  
+  img, iframe
+    display: block
+    max-width: 100%
+
+.custom-page-content
+  +flex(1 1 800px)
+  padding: 0 100px
+  
+  @media screen and (max-width: $break-medium)
+    +flex(100%)
+    max-width: 100%
+    padding: 0
+  
+.empty-container
+  flex: 1 0 200px
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+
+.wrapper
+  padding-left: 7vw
+  padding-right: 7vw
+  
+.intro-overlay
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background-color: $background-color
+  font-size: 80px
+  height: 100%
+  left: 0
+  padding: 0 7vw
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 99
+  
+  @media screen and (max-width: $break-small)
+    font-size: 40px
+  
+  &.preload
+    background-color: $background-color
+  
+  .intro-text
+    display: none
+    text-align: center
+
+.cursor
+  opacity: 0
+    
+.show-cursor .cursor
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  height: 120px
+  background-color: $button-background-color
+  border-radius: 120px
+  color: $button-text-color
+  +transform(translate3d(0px, 0px, 0px) scale(.1))
+  +transition(translate3d(0px, 0px, 0px) scale .5s cubic-bezier(.25,.1,.25,1))
+  transform-origin: 50% 50%
+  font-size: 16px
+  opacity: 1
+  pointer-events: none
+  position: fixed
+  text-align: center
+  width: 120px
+  z-index: 1000
+  
+  .cursor-text
+    opacity: 0
+  
+  &.expanded
+    +transform(scale(1))
+    +transition(translate3d(0px, 0px, 0px) scale .5s cubic-bezier(.25,.1,.25,1))
+    transform-origin: 50% 50%
+    .cursor-text
+      opacity: 1
+  
+.dark-overlay
+  +transition(all .5s cubic-bezier(.25,.1,.25,1))
+  background-color: rgba(0,0,0,.5)
+  height: 100vh
+  left: 0
+  opacity: 0
+  position: fixed
+  top: 0
+  visibility: hidden
+  width: 100%
+  z-index: 98
+  
+  &.visible
+    opacity: 1
+    visibility: visible
+    
+.full-screen-overlay
+  +transition(all .5s cubic-bezier(.25,.1,.25,1))
+  background-color: $background-color
+  font-size: 20px
+  height: 100vh
+  left: 0
+  opacity: 0
+  overflow: auto
+  padding: 50px 7vw
+  position: fixed
+  top: 0
+  width: 100%
+  visibility: hidden
+  z-index: 98
+  
+  &.show
+    opacity: 1
+    visibility: visible
+    
+  .hamburger
+    margin-right: auto
+    
+  .overlay-header
+    +flexbox
+    +justify-content(space-around)
+    +align-items(start)
+    height: 150px
+    position: relative
+    
+  .overlay-title
+    position: absolute
+    text-align: center
+    
+  .overlay-content
+    width: 100%
+    
+    &.centered-content
+      margin: 0 auto
+      max-width: 800px
+
+.categories-list
+  font-size: 32px
+  line-height: 64px
+  text-align: center
+  
+  @media screen and (max-width: $break-small)
+    font-size: 24px
+    line-height: 40px
+  
+.pages .page-nav-menu
+  display: block
+  font-size: 16px
+  
+.link-list
+  font-size: 16px
+  line-height: 16px
+  margin-bottom: 30px
+  
+  &.pages-links
+    @media screen and (max-width: $break-medium)
+      font-size: 32px
+  
+  @media screen and (max-width: $break-medium)
+    text-align: center
+  
+  li
+    +transition(all .5s)
+    display: block
+    margin: 6px 0
+    padding-left: 0
+    position: relative
+    
+    a
+      display: block
+      padding: 5px 0
+    
+  &.pages-links li
+  
+    &:before
+      +transform(translateY(-50%))
+      +transition(all .5s)
+      border: 1px solid transparent
+      content: " "
+      left: 0
+      position: absolute
+      top: 50%
+      width: 0px
+  
+    &.selected, &:hover
+      padding-left: 30px
+      
+      &:before
+        border: 1px solid $text-color
+        width: 20px
+      
+
+      
+.social-links
+  font-size: 14px
+  
+.credit
+  font-size: 10px
+  line-height: 14px
+  
+  @media screen and (max-width: $break-medium)
+    text-align: center
+
+.scrollbar-measure
+  height: 100px
+  overflow: scroll
+  position: absolute
+  top: -9999px
+  
+.button
+  +all-transitions
+  appearance: none
+  -webkit-appearance: none
+  background-color: $button-background-color
+  border-radius: 0
+  color: $button-text-color
+  display: inline-block
+  font-size: 16px
+  height: 60px
+  letter-spacing: 2px
+  line-height: 60px
+  outline: none
+  text-align: center
+  width: 100%
+  
+  &:hover, &:active
+    opacity: .7
+    
+.flash-message
+  +flexbox
+  background-color: $text-color
+  color: #FFFFFF
+  display: none
+  padding: 20px 7vw
+  
+  .flash-message-close
+    margin-left: auto
+  
+  

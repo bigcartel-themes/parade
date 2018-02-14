@@ -1,0 +1,144 @@
+@import 'variables'
+
+
+.product-page-title
+  font-size: 32px
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+
+.product-page-subtitle
+  font-size: 16px
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+    
+.product-images
+  height: 100vh
+  left: 0
+  margin: 0 auto
+  position: absolute
+  top: 0
+  width: 100%
+  
+  @media screen and (max-width: $break-medium)
+    height: auto
+    position: absolute
+  
+.product-image
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  position: absolute
+  height: 100%
+  width: 100%
+  
+  &.fit
+    height: calc(100vh - 400px)
+    margin: 200px
+    width: calc(100% - 400px)
+    
+    @media screen and (max-width: $break-medium)
+      height: 100%
+      margin: 0
+      width: 100%
+    
+    img
+      height: auto
+      margin: 0 auto
+      max-height: 100%
+      max-width: 100%
+      width: auto
+  
+  @media screen and (max-width: $break-medium)
+    position: relative
+    left: auto
+    top: auto
+    bottom: auto
+    height: auto
+  
+  img
+    display: block
+    object-fit: cover
+    object-position: 50% 50%
+    width: 100%
+    height: 100%
+    
+    @media screen and (max-width: $break-medium)
+      height: auto
+    
+    
+.flickity-viewport
+  z-index: 94
+    
+.flickity-page-dots
+  bottom: 50px
+  z-index: 94
+  
+  .dot
+    border-radius: 0
+    height: 2px
+    width: 24px
+    
+.multiple-product-images .flickity-prev-next-button
+  border-radius: 0
+  background: transparent
+  bottom: 0
+  height: 100%
+  top: 0
+  transform: none
+  width: 33%
+  z-index: 95
+  
+  @media screen and (max-width: $break-medium)
+    display: none
+  
+  svg
+    display: none
+    
+  &:hover
+    background: transparent
+  
+  &.next
+    cursor: url('/images/arrow-right.png') 46 16, auto !important
+    right: 0
+    
+  &.previous
+    cursor: url('/images/arrow-left.png') 0 16, auto !important
+    left: 0
+    
+.product-description
+  font-size: 24px
+  line-height: 40px
+  
+  a
+    text-decoration: underline
+  
+  img, iframe
+    display: block
+    max-width: 100%
+
+.product-form
+  .options-list
+    line-height: 36px
+    text-align: center
+    
+    li
+      padding: 10px 3px
+  
+.product-quantity
+  display: none
+
+.add-to-cart-button
+  display: none
+  
+  @media screen and (max-width: $break-medium)
+    display: block
+    z-index: 1000
+    position: fixed
+    top: auto
+    left: 0
+    bottom: 0
+    border: 0
+    font-size: 13px

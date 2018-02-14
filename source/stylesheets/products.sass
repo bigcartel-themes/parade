@@ -1,0 +1,84 @@
+@import 'variables'
+
+.product-list
+  list-style: none
+  margin: 0
+  margin-top: 280px
+  max-width: 100%
+  padding: 0 60px
+  position: relative
+  width: 100%
+  
+  @media screen and (max-width: $break-medium)
+    padding: 0
+  
+.product-card
+  +transition(opacity 2s cubic-bezier(.25,.1,.25,1))
+  margin-bottom: 112px
+  max-width: 53%
+  position: relative
+  width: 100%
+  
+  .product-status
+    font-size: 24px
+    line-height: 30px
+    
+  .product-name
+    font-size: 64px
+  
+  .product-info
+    +transition(opacity 2s cubic-bezier(.25,.1,.25,1))
+    position: absolute
+    opacity: 0
+    top: 50%
+    left: 50%
+    text-align: center
+    +transform(translateY(-50%) translateX(50%))
+  
+  &:nth-child(odd)
+    margin-left: auto
+    
+    .product-info
+      left: auto
+      right: 50%
+      +transform(translateY(-50%) translateX(-50%))
+      
+  &.visible .product-info
+    opacity: 1
+  
+.product-link
+  display: block
+  position: relative
+  
+.product-thumbnail-image
+  display: block
+  width: 100%
+  
+.spinner 
+  width: 40px
+  height: 40px
+  margin: 200px auto
+  background-color: #111
+  border-radius: 100%
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out
+  animation: sk-scaleout 1.0s infinite ease-in-out
+
+@-webkit-keyframes sk-scaleout
+  0%
+    -webkit-transform: scale(0)
+  100%
+    -webkit-transform: scale(1.0)
+    opacity: 0
+
+@keyframes sk-scaleout
+  0% 
+    -webkit-transform: scale(0)
+    transform: scale(0)
+  100%
+    -webkit-transform: scale(1.0)
+    transform: scale(1.0)
+    opacity: 0
+
+.infinite-scroll-last
+  font-size: 16px
+  text-align: center

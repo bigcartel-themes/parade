@@ -1,0 +1,118 @@
+@import 'variables'
+
+
+.ajax-cart
+  transition: 1s -webkit-transform
+  transition: 1s transform
+  transition: 1s transform, 1s -webkit-transform
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
+  -webkit-transform: translate(0px, -50vh)
+  transform: translate(0px, -50vh)
+  transition-property: height, -webkit-transform
+  transition-property: transform, height
+  transition-property: transform, height, -webkit-transform
+  position: absolute
+  width: 100%
+  top: 0
+  left: 0
+  z-index: 99999
+  background: #000
+  color: #fff
+  min-height: 50vh
+  max-height: 90%
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+  -ms-flex-direction: column
+  flex-direction: column
+  
+.cart-holder
+  background-color: inherit
+  height: auto
+  max-height: 100vh
+  overflow-y: auto
+  padding: 0 7vw 120px
+  position: fixed
+  width: 100%
+  z-index: 200
+  
+  header
+    padding: 0
+    position: relative
+    top: 0
+    left: 0
+    width: 100%
+    
+  .store-link
+    font-size: 40px
+    
+.cart-content
+  margin: 0 auto
+  max-width: 800px
+  width: 100%
+
+.cart-items
+  border-bottom: 1px solid #000000
+
+.cart-item
+  border-top: 1px solid #000000
+  +flexbox
+  +flex-direction(row)
+  +align-items(center)
+  font-size: 16px
+  padding: 20px 0
+
+.item-image-details
+  +flexbox
+  +align-items(center)
+  
+.item-details
+  padding: 0 24px
+  
+.item-quantity-holder
+  +flexbox
+  margin-left: auto
+  padding-right: 60px
+
+.item-details-option
+  font-size: 10px
+  margin-top: 12px
+  
+.qty-button
+  background: none
+  border: none
+  height: 24px
+  padding: 0
+  width: 24px
+  
+  svg
+    height: 24px
+    width: 24px
+    
+.item-remove
+  padding-left: 80px
+  
+  svg
+    height: 24px
+    width: 24px
+  
+.qty-input
+  background: none
+  border: none
+  height: 24px
+  line-height: 24px
+  text-align: center
+  width: 64px
+
+.item-image
+  background-size: cover
+  display: block
+  height: 120px
+  width: 120px
+  
+.checkout-btn
+  margin-top: 32px

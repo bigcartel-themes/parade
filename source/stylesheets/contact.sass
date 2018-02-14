@@ -1,0 +1,41 @@
+@import 'variables'
+
+.contact-label
+  display: block
+  font-family: $primary-font
+  font-size: 16px
+  
+.contact-form
+  width: 100%
+  
+  input, textarea
+    appearance: none
+    background: none
+    border: none
+    border-bottom: 1px solid $text-color
+    font-size: 15px
+    padding: 12px 0
+    width: 100%
+    
+    &:active, &:focus
+      border-bottom: 1px solid $text-color
+      outline: none
+
+.input-holder
+  position: relative
+
+#captcha_image
+  height: 41px
+  position: absolute
+  right: 0
+  top: 0
+  
+.contact-form-block
+  margin-bottom: 56px
+  
+.captcha-instructions
+  color: $text-color
+  font-size: 10px
+  
+.message-sent
+  font-size: 13px
