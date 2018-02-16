@@ -1,6 +1,6 @@
 {
   "name": "Parade",
-  "version": "0.0.24",
+  "version": "0.0.26",
   "images": [
     {
       "variable": "logo",
@@ -69,6 +69,17 @@
       "label": "Announcement message",
       "type": "text",
       "description": "Displays an announcement message"
+    },
+    {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign_and_code",
+      "description": "Sets the display of prices in your shop"
     },
     {
       "variable": "twitter_url",
