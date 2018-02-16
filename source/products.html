@@ -10,7 +10,7 @@
           {% when 'coming-soon' %}
             {% assign product_status = 'Coming soon' %}
         {% endcase %}
-      <li data-product-id="{{ product.id }}" class="product-card {{ product.css_class }}" data-tooltip="{{ product.default_price | money_with_sign | strip_html }}" data-scroll data-scroll-showCallback="customFunction('Visible')" data-scroll-hideCallback="customFunction('Invisible')">
+      <li class="product-card {{ product.css_class }}" data-tooltip="{{ product.default_price | money: theme.money_format | strip_html }}">
         <a class="product-link" href="{{ product.url }}">
           <img class="product-thumbnail-image" alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 2000 }}">
           <div class="product-info">
