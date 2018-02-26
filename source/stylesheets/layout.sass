@@ -75,6 +75,7 @@ header
   padding-left: 7vw
   padding-right: 7vw
   position: fixed
+  top: 0
   width: 100%
   z-index: 97
   
@@ -225,7 +226,8 @@ header
 .page-nav-menu
   flex: 1 0 200px
   
-  @media screen and (max-width: $break-medium)
+@media screen and (max-width: $break-medium)
+  .main > .page-nav-menu
     display: none
   
 .custom .main, #contact .main
@@ -265,6 +267,7 @@ header
   font-size: 80px
   height: 100%
   left: 0
+  line-height: 92px
   padding: 0 7vw
   position: fixed
   top: 0
@@ -273,6 +276,7 @@ header
   
   @media screen and (max-width: $break-small)
     font-size: 40px
+    line-height: 52px
   
   &.preload
     background-color: $background-color
@@ -390,6 +394,7 @@ header
   &.pages-links
     @media screen and (max-width: $break-medium)
       font-size: 32px
+      line-height: 36px
   
   @media screen and (max-width: $break-medium)
     text-align: center
