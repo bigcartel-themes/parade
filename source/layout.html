@@ -20,16 +20,18 @@
       <div class="primary-header">
         <div class="header-left">
           {% if page.full_url contains '/product/' or page.category == 'custom' or page.permalink == 'contact' %}
-            <button class="hamburger hamburger--squeeze is-active return-home-link" type="button">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-              </span>
+            <button class="hamburger is-active return-home-link" type="button">
+              <div>
+              	<span></span>
+              	<span></span>
+              </div>
             </button>
           {% else %}
-            <button class="hamburger hamburger--squeeze open-page-nav" type="button">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-              </span>
+            <button class="hamburger open-page-nav" type="button">
+              <div>
+              	<span></span>
+              	<span></span>
+              </div>
             </button>
           {% endif %}
         </div>
@@ -169,10 +171,11 @@
     
     <div class="full-screen-overlay page-nav-overlay">
       <div class="overlay-header">
-        <button class="hamburger hamburger--squeeze close-page-nav-overlay" type="button">
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
+        <button class="hamburger close-page-nav-overlay" type="button">
+          <div>
+          	<span></span>
+          	<span></span>
+          </div>
         </button>
       </div>
       <div class="overlay-content">
@@ -223,10 +226,11 @@
     {% if page.permalink == 'home' or page.permalink == 'products' %}
       <div class="full-screen-overlay category-nav-overlay">
         <div class="overlay-header">
-          <button class="hamburger hamburger--squeeze close-category-nav-overlay" type="button">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
+          <button class="hamburger close-category-nav-overlay" type="button">
+            <div>
+            	<span></span>
+            	<span></span>
+            </div>
           </button>
           <div class="overlay-title">Select a category</div>
         </div>

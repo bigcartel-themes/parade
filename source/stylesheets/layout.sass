@@ -91,6 +91,8 @@ header
     padding: 50px 0 15px
     
   .secondary-header
+    margin: 0 auto
+    max-width: 80%
     text-align: center
   
   .header-center
@@ -142,82 +144,44 @@ header
   font-size: 16px
   
 .hamburger
-  display: inline-block
-  cursor: pointer
-  transition-property: all
-  transition-duration: 0.15s
-  transition-timing-function: linear
-  font: inherit
-  color: inherit
-  text-transform: none
-  background-color: transparent
-  border: 0
-  outline: 0
+  +transform(rotate(0deg))
+  +transition(.5s ease-in-out)
+  background: none
+  border: none
+  height: 32px
   margin: 0
-  overflow: visible
+  outline: none
+  padding: 0
+  position: relative
+  width: 32px
   
-  &:hover
-    opacity: 0.7
-
-  .hamburger-box
-    width: 40px
-    height: 24px
-    display: inline-block
-    position: relative
-
-.hamburger-inner
-  background-color: transparent
-  display: block
-  top: 50%
-  margin-top: -2px
-  
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after
-  width: 40px
-  height: 2px
-  background-color: $text-color
-  border-radius: 2px
-  position: absolute
-  transition-property: transform
-  transition-duration: 0.15s
-  transition-timing-function: ease
-  
-.hamburger-inner
-  background-color: transparent
-
-.hamburger-inner::before, .hamburger-inner::after
-  content: ""
-  display: block
-  
-.hamburger-inner::before
-  top: 0
-
-.hamburger-inner::after
-  bottom: -10px
-  
-.hamburger--squeeze .hamburger-inner 
-  transition-duration: 1s
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
-  
-.hamburger--squeeze .hamburger-inner::before
-  transition: top 1s ease, opacity 1s ease
+  div
+    width: 30px
     
-.hamburger--squeeze .hamburger-inner::after
-  transition: bottom 1s ease, transform 1s cubic-bezier(0.55, 0.055, 0.675, 0.19)
-
-.hamburger--squeeze.is-active .hamburger-inner
-  transform: rotate(45deg)
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
-  background-color: $text-color
-  
-.hamburger--squeeze.is-active .hamburger-inner::before
-  top: 0
-  opacity: 0
-  transition: top 1s ease, opacity 1s ease
+  span
+    +transform(rotate(0deg))
+    +transition(.3s all)
+    display: block
+    position: absolute
+    height: 2px
+    width: 100%
+    background: #000000
+    opacity: 1
+    left: 0
     
-.hamburger--squeeze.is-active .hamburger-inner::after
-  bottom: 0
-  transform: rotate(-90deg)
-  transition: bottom 1s ease, transform 1s cubic-bezier(0.215, 0.61, 0.355, 1)
+    &:nth-child(1)
+      top: 0px
+
+    &:nth-child(2)
+      top: 8px
+      
+  &.is-active
+    span:nth-child(1)
+      +transform(rotate(-45deg))
+      top: 8px
+		
+    span:nth-child(2)
+      +transform(rotate(45deg))
 
 .main
   

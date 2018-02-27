@@ -9,12 +9,13 @@
 {% if product.status == 'active' %}
   <div class="full-screen-overlay product-option-overlay">
     <div class="overlay-header">
-      <button class="hamburger hamburger--squeeze close-product-option-overlay" type="button">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
+      <button class="hamburger close-product-option-overlay" type="button">
+        <div>
+        	<span></span>
+        	<span></span>
+        </div>
       </button>
-      <div class="overlay-title">{{ product.default_price | money: theme.money_format }} — Select option</div>
+      <div class="overlay-title">{{ product.default_price | money_with_sign }} — Select option</div>
     </div>
     
     <div class="overlay-content centered-content">
@@ -26,7 +27,7 @@
           <ul class="options-list">
             {% for option in product.options %}
               <li class="option-item{% if option.sold_out %} sold-out{% endif %}" data-option-id="{{ option.id }}" data-option-price="{{ option.price | money_with_sign | strip_html }}">
-                {{ option.name }} {% if option.price != product.default_price %}— {{ option.price | money: theme.money_format }}{% endif %}
+                {{ option.name }} {% if option.price != product.default_price %}— {{ option.price | money_with_sign }}{% endif %}
               </li>
             {% endfor %}
           </ul>
@@ -37,12 +38,20 @@
   </div>
 {% endif %}
 
+<div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
+<div class="mobile-product-description product-description show-mobile-portrait">
+  {% if product.description != blank %}
+    {{ product.description | paragraphs }}
+  {% endif %}
+</div>
+
 <div class="full-screen-overlay product-description-overlay">
   <div class="overlay-header">
     <button class="hamburger hamburger--squeeze close-product-description-overlay" type="button">
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
+      <div>
+      	<span></span>
+      	<span></span>
+      </div>
     </button>
   
     <div class="overlay-title">{{ page.name }}</div>
@@ -59,11 +68,11 @@
 {% if product.status == 'active' %}
   {% if product.has_default_option %}
     <button class="button add-to-cart-button" type="submit">
-      <span class="status-text">{{ product.default_price | money: theme.money_format }} — Add to Cart</span>
+      <span class="status-text">{{ product.default_price | money_with_sign }} — Add to Cart</span>
     </button>
   {% else %}
     <button class="button add-to-cart-button" type="submit">
-      <span class="status-text">{{ product.default_price | money: theme.money_format }} — Select option</span>
+      <span class="status-text">{{ product.default_price | money_with_sign }} — Select option</span>
     </button>
   {% endif %}
 {% endif %}
