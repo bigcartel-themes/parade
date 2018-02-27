@@ -1,35 +1,5 @@
 @import 'variables'
 
-
-.ajax-cart
-  transition: 1s -webkit-transform
-  transition: 1s transform
-  transition: 1s transform, 1s -webkit-transform
-  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
-  -webkit-transform: translate(0px, -50vh)
-  transform: translate(0px, -50vh)
-  transition-property: height, -webkit-transform
-  transition-property: transform, height
-  transition-property: transform, height, -webkit-transform
-  position: absolute
-  width: 100%
-  top: 0
-  left: 0
-  z-index: 99999
-  background: #000
-  color: #fff
-  min-height: 50vh
-  max-height: 90%
-  overflow-y: scroll
-  -webkit-overflow-scrolling: touch
-  display: -webkit-box
-  display: -ms-flexbox
-  display: flex
-  -webkit-box-orient: vertical
-  -webkit-box-direction: normal
-  -ms-flex-direction: column
-  flex-direction: column
-  
 .cart-holder
   background-color: inherit
   height: auto
@@ -56,13 +26,13 @@
   width: 100%
 
 .cart-items
-  border-bottom: 1px solid #000000
+  border-bottom: 1px solid $button-background-color
 
 .cart-item
-  border-top: 1px solid #000000
   +flexbox
   +flex-direction(row)
   +align-items(center)
+  border-top: 1px solid $button-background-color
   font-size: 16px
   padding: 20px 0
 
@@ -89,12 +59,8 @@
   padding: 0
   width: 24px
   
-  svg
-    height: 24px
-    width: 24px
-    
-.item-remove
-  padding-left: 80px
+  &.remove-qty
+    margin-left: 30px
   
   svg
     height: 24px
