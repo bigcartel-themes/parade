@@ -1,16 +1,15 @@
 @import 'variables'
 
-
 .product-page-title
   font-size: 32px
   
-  @media screen and (max-width: $break-medium)
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
     display: none
-
+  
 .product-page-subtitle
   font-size: 16px
   
-  @media screen and (max-width: $break-medium)
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
     display: none
     
 .product-images
@@ -21,26 +20,33 @@
   top: 0
   width: 100%
   
-  @media screen and (max-width: $break-medium)
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
     height: auto
-    position: absolute
-  
+    position: relative
+      
 .product-image
   left: 0
   top: 0
   right: 0
   bottom: 0
   position: absolute
-  height: 100%
+  height: 100vh
   width: 100%
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    position: relative
+    left: auto
+    top: auto
+    bottom: auto
+    height: auto
   
   &.fit
     height: calc(100vh - 400px)
     margin: 200px
     width: calc(100% - 400px)
     
-    @media screen and (max-width: $break-medium)
-      height: 100%
+    @media screen and (max-width: $break-medium) and (orientation: portrait)
+      height: auto
       margin: 0
       width: 100%
     
@@ -51,30 +57,25 @@
       max-width: 100%
       width: auto
   
-  @media screen and (max-width: $break-medium)
-    position: relative
-    left: auto
-    top: auto
-    bottom: auto
-    height: auto
-  
   img
     display: block
     object-fit: cover
     object-position: 50% 50%
     width: 100%
-    height: 100%
+    height: 100vh
     
-    @media screen and (max-width: $break-medium)
-      height: auto
-    
-    
+    @media screen and (max-width: $break-medium) and (orientation: portrait)
+      height: 100%
+
 .flickity-viewport
   z-index: 94
     
 .flickity-page-dots
   bottom: 50px
   z-index: 94
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    bottom: -40px
   
   .dot
     border-radius: 0
@@ -90,10 +91,7 @@
   transform: none
   width: 33%
   z-index: 95
-  
-  @media screen and (max-width: $break-medium)
-    display: none
-  
+
   svg
     display: none
     
@@ -107,6 +105,10 @@
   &.previous
     cursor: url('/images/arrow-left.png') 0 16, auto !important
     left: 0
+    
+.touch-device .multiple-product-images .flickity-prev-next-button
+  opacity: 0
+  visibility: hidden
     
 .product-description
   font-size: 24px
@@ -133,12 +135,58 @@
 .add-to-cart-button
   display: none
   
-  @media screen and (max-width: $break-medium)
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
     display: block
-    z-index: 1000
+    z-index: 98
     position: fixed
     top: auto
     left: 0
     bottom: 0
     border: 0
     font-size: 13px
+    width: 100%
+    border-radius: 0
+    
+.touch-device .add-to-cart-button
+  display: block
+  z-index: 98
+  position: fixed
+  left: auto
+  width: 200px
+  bottom: 20px
+  right: 20px
+  border-radius: 50%
+
+  @media screen and (max-width: $break-large) and (orientation: portrait)
+    display: block
+    z-index: 98
+    position: fixed
+    top: auto
+    left: 0
+    bottom: 0
+    border: 0
+    font-size: 13px
+    width: 100%
+    border-radius: 0
+
+.show-mobile-portrait
+  display: none
+  padding: 50px 7vw
+  
+.mobile-product-title
+  font-size: 24px
+  line-height: 32px
+  text-align: center
+  
+.mobile-product-description
+  font-size: 18px
+  line-height: 32px
+  
+@media screen and (max-width: $break-medium) and (orientation: portrait)
+  #product .main
+    padding: 0
+    
+  .show-mobile-portrait
+    display: block
+    
+    
