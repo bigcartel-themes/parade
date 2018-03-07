@@ -10,6 +10,9 @@
   width: 100%
   z-index: 200
   
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    height: 100vh
+  
   header
     padding: 0
     position: relative
@@ -35,10 +38,16 @@
   border-top: 1px solid $button-background-color
   font-size: 16px
   padding: 20px 0
+  
+  @media screen and (max-width: $break-small)
+    +flex-wrap(wrap)
 
 .item-image-details
   +flexbox
   +align-items(center)
+  
+  @media screen and (max-width: $break-small)
+    +flex-basis(80%)
   
 .item-details
   padding: 0 24px
@@ -47,7 +56,19 @@
   +flexbox
   margin-left: auto
   padding-right: 60px
-
+  
+  @media screen and (max-width: $break-small)
+    order: 3
+    margin-left: 0
+    margin-top: 20px
+    max-width: 50%
+    
+.item-details-price
+  @media screen and (max-width: $break-small)
+    order: 4
+    margin-top: 20px
+    margin-left: auto
+  
 .item-details-option
   font-size: 10px
   margin-top: 12px
@@ -61,6 +82,11 @@
   
   &.remove-qty
     margin-left: 30px
+    
+    @media screen and (max-width: $break-small)
+      +flex-basis(20%)
+      margin-left: auto
+      order: 2
   
   svg
     height: 24px
@@ -75,6 +101,7 @@
   width: 64px
 
 .item-image
+  background-position: 50% 50%
   background-size: cover
   display: block
   height: 120px
@@ -82,3 +109,9 @@
   
 .checkout-btn
   margin-top: 32px
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    bottom: 0
+    left: 0
+    position: fixed
+    width: 100%
