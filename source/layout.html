@@ -10,12 +10,6 @@
   </head>
 
   <body id="{{ page.permalink }}" class="{{ page.category }}">
-    {% if theme.flash_message != blank %}
-      <div class="flash-message">
-        <div class="flash-message-text">This is a cool message!</div>
-        <div class="flash-message-close">X</div>
-      </div>
-    {% endif %}
     <header class="header-wrapper layout-header">
       <div class="primary-header">
         <div class="header-left">
@@ -51,11 +45,11 @@
             {% case product.status %}
               {% when 'active' %}
                 {% if product.has_default_option %}
-                  {% assign cursor_action = 'Select option' %}
-                {% else %}
                   {% assign cursor_action = 'Buy' %}
+                {% else %}
+                  {% assign cursor_action = 'Select option' %}
                 {% endif %}
-                {% capture cursor_title %}{{ product.default_price | money_with_sign | strip_html }}<br />{{ cursor_action }}{% endcapture %}
+                {% capture cursor_title %}{{ product.default_price | money: theme.money_format | strip_html }}<br />{{ cursor_action }}{% endcapture %}
               {% when 'sold-out' %}
                 {% assign cursor_title = 'Sold Out' %}
               {% when 'coming-soon' %}
@@ -135,7 +129,10 @@
         {% if page.permalink == 'contact' %}
           {{ page_content }}
         {% else %}
-          <div class="custom-page-content">{{ page_content | paragraphs }}</div>
+          <div class="custom-page-content">
+            <h1 class="custom-page-title">{{ page.name }}</h1>
+            {{ page_content | paragraphs }}
+          </div>
         {% endif %}
         
         
@@ -166,9 +163,7 @@
       </div>
     {% endif %}
     
-    
-    
-    
+
     <div class="full-screen-overlay page-nav-overlay">
       <div class="overlay-header">
         <button class="hamburger close-page-nav-overlay" type="button">
@@ -251,9 +246,30 @@
     {% endif %}
 
     <div class="cursor"><div class="cursor-text"><div class="cursor-text-price"></div><div class="cursor-text-caption">View</div></div></div>
-    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
+    <script>
+      var formatMoney = Format.money;
+      Format.money = function(number) {
+        {% case theme.money_format %}
+        {% when 'sign' %}
+          return formatMoney(number, true, true, false);
+        {% when 'code' %}
+          return formatMoney(number, true, false, true);
+        {% when 'sign_and_code' %}
+          return formatMoney(number, true, true, true);
+        {% endcase %}
+      };
+    </script>
+    {% if theme.announcement_message_text != blank %}
+      <div class="flash-message">
+        <div class="flash-message-text">{{ theme.announcement_message_text }}</div>
+        <div class="flash-message-close">X</div>
+      </div>
+      <script>
+        var announcementMessage = '{{ theme.announcement_message_text }}';
+      </script>
+    {% endif %}
     <script src="{{ theme | theme_js_url }}"></script>
   </body>
 </html>
