@@ -15,9 +15,11 @@
 .product-card
   +transition(opacity 2s cubic-bezier(.25,.1,.25,1))
   max-width: 53%
-  margin-bottom: 40%
   position: relative
   width: 100%
+  
+  @media screen and (max-width: $break-medium)
+    max-width: 80%
   
   .product-status
     font-size: 24px
@@ -25,10 +27,13 @@
     
   .product-name
     font-size: 64px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 40px
   
   .product-info
     +transform(translateX(-50%) translateY(-50%))
-    +transition(all .5s cubic-bezier(.25,.1,.25,1))
+    +transition(all .2s cubic-bezier(.25,.1,.25,1))
     left: 50%
     max-width: 50%
     opacity: 0
@@ -37,9 +42,13 @@
     top: 50%
     visibility: hidden
     width: 100%
+    z-index: 30
   
-  &:nth-child(odd)
+  &:nth-child(4n+1)
     margin-left: auto
+    
+.product-card-spacer
+  height: 20vh
     
 .show-product-title .product-info
   opacity: 1
