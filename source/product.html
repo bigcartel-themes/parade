@@ -25,7 +25,7 @@
         {% else %}
           <input type="hidden" name="[cart][add][id]" id="option" class="hidden-product-option">
           <ul class="options-list">
-            {% for option in product.options %}
+            {% for option in product.options_in_stock %}
               <li class="option-item{% if option.sold_out %} sold-out{% endif %}" data-option-id="{{ option.id }}" data-option-price="{{ option.price | money: theme.money_format | strip_html }}">
                 {{ option.name }} {% if option.price != product.default_price %}— {{ option.price | money: theme.money_format }}{% endif %}
               </li>
@@ -75,4 +75,9 @@
       <span class="status-text">{{ product.default_price | money: theme.money_format }} — Select option</span>
     </button>
   {% endif %}
+{% endif %}
+
+{% if product.images.size > 1 %}
+  <div class="arrow arrow-previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 33.9"><path d="M46 16.2H2.9L18 1.1 17 0 1.1 15.9 0 17l1.1 1L17 33.9l1-1L2.9 17.7H46z"/></svg></div>
+  <div class="arrow arrow-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 33.9"><path d="M0 17.7h43.1L28 32.9l1 1L44.9 18l1.1-1-1.1-1.1L29 0l-1 1.1 15.1 15.1H0z"/></svg></div>
 {% endif %}
