@@ -70,7 +70,7 @@
 
       <div class="secondary-header">
         {% if page.full_url contains '/product/' %}
-          <div class="product-page-subtitle"><a href="#" class="open-product-info">View Info</a></div>
+        
         {% else %}
           {% if theme.logo != blank %}
             <a class="store-link" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
