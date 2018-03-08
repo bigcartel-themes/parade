@@ -103,12 +103,21 @@
   visibility: hidden
     
 .product-description
+  +transform(translateX(-50%))
   font-size: 24px
+  left: 50%
   line-height: 40px
+  position: absolute
+  top: calc(100vh + 50px)
+  max-width: calc(800px + 14vw)
+  padding: 7vw
+  width: 100%
   
   @media screen and (max-width: $break-small)
     font-size: 18px
     line-height: 32px
+    position: relative
+    top: auto
   
   a
     text-decoration: underline
