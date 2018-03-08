@@ -9,6 +9,7 @@ html
   height: 100%
   min-height: 100%
   position: relative
+  width: 100%
   
 body
   background-color: $background-color
@@ -20,17 +21,18 @@ body
   line-height: 1
   margin: 0
   padding: 0
-  
+  width: 100%
+
   &.overlay-open
     overflow: hidden
-  
-  *
+
+  * 
     cursor: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), auto
-  
-  &.maintenance-page
-    cursor: default
-    text-align: center
     
+  &.maintenance-page
+    cursor: auto !important
+    text-align: center
+
     .maintenance-container
       +flexbox
       +align-items(center)
@@ -46,12 +48,19 @@ body
     .maintenance-social-links
       font-size: 16px
       
+      li
+        display: inline-block
+        
+        @media screen and (max-width: $break-small)
+          display: block
+      
       a
+        cursor: pointer !important
         display: block
         padding: 4px 10px
     
     *
-      cursor: default
+      cursor: auto !important
 
 a
   color: $text-color
@@ -101,6 +110,7 @@ header
   .store-link
     display: inline-block
     font-size: 56px
+    line-height: 1.2em
     
     @media screen and (max-width: $break-small)
       font-size: 32px
@@ -120,6 +130,12 @@ header
       opacity: 0
       visibility: hidden
 
+.has-flash-message header
+  top: 50px
+
+.has-flash-message .overlay-header
+  top: 50px
+  
 .store-logo
   max-height: 120px
         
@@ -184,7 +200,6 @@ header
       +transform(rotate(45deg))
 
 .main
-  
   margin: 0 auto
   padding: 50px 7vw
   position: relative
@@ -207,6 +222,16 @@ header
     display: block
     max-width: 100%
 
+.custom-page-title
+  display: none
+  font-size: 24px
+  line-height: 1.2em
+  text-align: center
+  
+  @media screen and (max-width: $break-medium)
+    display: block
+    font-size: 18px
+      
 .custom-page-content
   +flex(1 1 800px)
   padding: 0 100px
@@ -253,36 +278,58 @@ header
     text-align: center
 
 .cursor
+  +transform(translateZ(0))
   opacity: 0
     
 .show-cursor .cursor
   +flexbox
   +align-items(center)
   +justify-content(center)
-  height: 120px
+  +transform(scale(.11))
   background-color: $button-background-color
-  border-radius: 120px
+  border-radius: 50%
   color: $button-text-color
-  +transform(translate3d(0px, 0px, 0px) scale(.1))
-  +transition(translate3d(0px, 0px, 0px) scale .5s cubic-bezier(.25,.1,.25,1))
-  transform-origin: 50% 50%
   font-size: 16px
+  height: 120px
+  line-height: 120px
   opacity: 1
   pointer-events: none
-  position: fixed
+  position: absolute
   text-align: center
   width: 120px
   z-index: 1000
-  
+
   .cursor-text
+    font-size: 0px
+    line-height: 18px
     opacity: 0
   
   &.expanded
     +transform(scale(1))
-    +transition(translate3d(0px, 0px, 0px) scale .5s cubic-bezier(.25,.1,.25,1))
+    +transition(transform .2s ease-in-out)
     transform-origin: 50% 50%
+    
     .cursor-text
+      font-size: 16px
       opacity: 1
+
+.show-cursor .arrow
+  height: 60px
+  width: 60px
+  background:red
+  z-index: 1000
+  pointer-events: none
+  display: none
+  position: absolute
+  
+  svg
+    fill: $button-background-color
+    height: 60px
+    width: 60px
+    
+  &.next
+  
+  &.previous
   
 .dark-overlay
   +transition(all .5s cubic-bezier(.25,.1,.25,1))
@@ -396,8 +443,6 @@ header
         border: 1px solid $text-color
         width: 20px
       
-
-      
 .social-links
   font-size: 14px
   
@@ -406,6 +451,7 @@ header
   line-height: 14px
   
   @media screen and (max-width: $break-medium)
+    margin-top: 100px
     text-align: center
 
 .scrollbar-measure
@@ -419,6 +465,7 @@ header
   appearance: none
   -webkit-appearance: none
   background-color: $button-background-color
+  border: none
   border-radius: 0
   color: $button-text-color
   display: inline-block
@@ -432,15 +479,22 @@ header
   
   &:hover, &:active
     opacity: .7
-    
+
 .flash-message
-  +flexbox
-  background-color: $text-color
-  color: #FFFFFF
   display: none
+     
+.has-flash-message .flash-message
+  +flexbox
+  background-color: $button-background-color
+  color: $button-text-color
+  font-size: 14px
+  left: 0
+  line-height: 18px
   padding: 20px 7vw
+  position: absolute
+  top: 0
+  width: 100%
+  z-index: 98
   
   .flash-message-close
     margin-left: auto
-  
-  
