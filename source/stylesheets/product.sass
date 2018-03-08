@@ -133,6 +133,9 @@
     
     li
       padding: 10px 3px
+      
+      &:hover
+        opacity: .6
   
 .product-quantity
   display: none
@@ -153,28 +156,12 @@
     border-radius: 0
     
 .touch-device .product-page-button
+  bottom: 0
   display: block
-  z-index: 98
+  font-size: 14px
+  left: 0
   position: fixed
-  height: 120px
-  font-size: 16px
-  left: auto
-  width: 120px
-  bottom: 50px
-  right: 50px
-  border-radius: 50%
-
-  @media screen and (max-width: $break-large) and (orientation: portrait)
-    display: block
-    z-index: 98
-    position: fixed
-    top: auto
-    left: 0
-    bottom: 0
-    border: 0
-    font-size: 13px
-    width: 100%
-    border-radius: 0
+  width: 100%
 
 .show-mobile-portrait
   display: none

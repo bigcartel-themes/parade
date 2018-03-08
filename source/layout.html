@@ -45,11 +45,11 @@
             {% case product.status %}
               {% when 'active' %}
                 {% if product.has_default_option %}
-                  {% assign cursor_action = 'Buy' %}
+                  {% assign cursor_action = 'Add to Cart' %}
                 {% else %}
                   {% assign cursor_action = 'Select option' %}
                 {% endif %}
-                {% capture cursor_title %}{{ product.default_price | money: theme.money_format | strip_html }}<br />{{ cursor_action }}{% endcapture %}
+                {% capture cursor_title %}{{ cursor_action }}{% endcapture %}
               {% when 'sold-out' %}
                 {% assign cursor_title = 'Sold Out' %}
               {% when 'coming-soon' %}
@@ -70,7 +70,7 @@
 
       <div class="secondary-header">
         {% if page.full_url contains '/product/' %}
-        
+          <div class="product-page-subtitle">{{ product.default_price | money: theme.money_format }} {% if product.on_sale %}— On Sale{% endif %}</div>
         {% else %}
           {% if theme.logo != blank %}
             <a class="store-link" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
@@ -245,7 +245,11 @@
       </div>
     {% endif %}
 
-    <div class="cursor"><div class="cursor-text"><div class="cursor-text-price"></div><div class="cursor-text-caption">View</div></div></div>
+    <div class="cursor">
+      <div class="cursor-text">
+        <div class="cursor-text-caption">View</div>
+      </div>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script>
