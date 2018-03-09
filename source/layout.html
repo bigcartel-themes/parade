@@ -47,7 +47,7 @@
                 {% if product.has_default_option %}
                   {% assign cursor_action = 'Add to Cart' %}
                 {% else %}
-                  {% assign cursor_action = 'Select option' %}
+                  {% assign cursor_action = 'Select Option' %}
                 {% endif %}
                 {% capture cursor_title %}{{ cursor_action }}{% endcapture %}
               {% when 'sold-out' %}
@@ -227,7 +227,7 @@
             	<span></span>
             </div>
           </button>
-          <div class="overlay-title">Select a category</div>
+          <div class="overlay-title">Select Category</div>
         </div>
         
         <div class="overlay-content centered-content">

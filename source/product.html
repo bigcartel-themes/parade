@@ -15,7 +15,7 @@
         	<span></span>
         </div>
       </button>
-      <div class="overlay-title">{{ product.default_price | money: theme.money_format }} — Select option</div>
+      <div class="overlay-title">Select Option — {{ product.default_price | money: theme.money_format }}</div>
     </div>
     
     <div class="overlay-content centered-content">
@@ -56,7 +56,7 @@
     </button>
   {% else %}
     <button class="button select-option-button product-page-button" type="submit">
-      <span class="status-text">Select option</span>
+      <span class="status-text">Select Option</span>
     </button>
   {% endif %}
 {% endif %}
