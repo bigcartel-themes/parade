@@ -49,13 +49,8 @@
                 {% else %}
                   {% assign cursor_action = 'Select Option' %}
                 {% endif %}
-                {% capture cursor_title %}{{ cursor_action }}{% endcapture %}
-              {% when 'sold-out' %}
-                {% assign cursor_title = 'Sold Out' %}
-              {% when 'coming-soon' %}
-                {% assign cursor_title = 'Coming Soon' %}
             {% endcase %}
-            <div class="product-page-title" data-cursor-title="{{ cursor_title }}" data-product-status="{{ product.status }}">{{ page.name }}</div>
+            <div class="product-page-title" data-cursor-action="{{ cursor_action }}">{{ page.name }}</div>
           {% endif %}
         </div>
         
@@ -70,7 +65,7 @@
 
       <div class="secondary-header">
         {% if page.full_url contains '/product/' %}
-          <div class="product-page-subtitle">{{ product.default_price | money: theme.money_format }} {% if product.on_sale %}— On Sale{% endif %}</div>
+          <div class="product-page-subtitle">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
         {% else %}
           {% if theme.logo != blank %}
             <a class="store-link" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
