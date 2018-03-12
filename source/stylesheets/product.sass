@@ -22,7 +22,11 @@
   
   @media screen and (max-width: $break-medium) and (orientation: portrait)
     height: auto
+    margin-bottom: 50px
     position: relative
+    
+    &.multiple-product-images
+      margin-bottom: 70px
       
 .product-image
   left: 0
@@ -51,11 +55,15 @@
       width: 100%
     
     img
-      height: auto
+      height: 100%
       margin: 0 auto
       max-height: 100%
       max-width: 100%
       width: auto
+      
+      @media screen and (max-width: $break-medium)
+        height: auto
+        width: 100%
   
   img
     display: block
@@ -110,12 +118,13 @@
   position: absolute
   top: calc(100vh + 50px)
   max-width: calc(800px + 14vw)
-  padding: 7vw
+  padding: 0 7vw
   width: 100%
   
   @media screen and (max-width: $break-small)
     font-size: 18px
     line-height: 32px
+    padding-bottom: 64px
     position: relative
     top: auto
   
@@ -165,12 +174,17 @@
 
 .show-mobile-portrait
   display: none
-  padding: 50px 7vw
+  padding: 0 7vw
+  text-align: center
   
 .mobile-product-title
   font-size: 24px
   line-height: 32px
   text-align: center
+  
+.mobile-product-subtitle
+  font-size: 16px
+  margin-top: 20px
   
 @media screen and (max-width: $break-medium) and (orientation: portrait)
   #product .main
