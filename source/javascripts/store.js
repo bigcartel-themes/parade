@@ -175,6 +175,7 @@ var openOverlay = function(overlay_name) {
   if ($(window).height() < $(document).height()) {
     $(document.body).css('margin-right', scrollBarWidth + 'px');
   }
+  $(body).addClass('overlay-open');
 }
 
 var closeOverlay = function(overlay_name) { 
@@ -182,6 +183,7 @@ var closeOverlay = function(overlay_name) {
   $(overlay_name).removeClass('show');
   $(document.body).css('margin-right', '');
   $('.scrollbar-measure').remove();
+  $('body').removeClass('overlay-open');
 }
 
 $('.open-page-nav').click(function(e) {
@@ -279,27 +281,33 @@ function getMouseX() {
 function getMouseY() {
   return y;
 }
-
-$(document).mousemove(function(e) {
+var updateCursor = function() { 
   if ($('body').hasClass('show-cursor')) {
     if ($('.arrow').length) { 
       var $arrow = $('.arrow');
       var cursorWidth = $('.arrow').outerWidth() /2 ;
       var cursorHeight = $('.arrow').outerHeight() / 2;
-      $('.arrow').css({
-        'left': getMouseX() - cursorWidth + 'px',
-        'top': getMouseY() - cursorHeight + 'px'
+      $('.arrow').offset({
+        'left': getMouseX() - cursorWidth,
+        'top': getMouseY() - cursorHeight
       });
     }
     
     var $cursor = $('.cursor');
-    var cursorWidth = $('.cursor').outerWidth() /2 ;
-    var cursorHeight = $('.cursor').outerHeight() / 2;
-    $('.cursor').css({
-      'left': getMouseX() - cursorWidth + 'px',
-      'top': getMouseY() - cursorHeight + 'px'
-    });
+    var cursorWidth = $('.cursor').width() /2 ;
+    var cursorHeight = $('.cursor').height() / 2;
+    
+      $('.cursor').css({
+        'left': getMouseX() - 65 + 'px',
+        'top': getMouseY() - 65 + 'px'
+      });
+
+    
+    
   }
+}
+$(document).mousemove(function(e) {
+  updateCursor();
 });
 
 

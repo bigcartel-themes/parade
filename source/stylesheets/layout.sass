@@ -23,6 +23,9 @@ body
   padding: 0
   width: 100%
   
+  * 
+    cursor: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), auto
+  
   &#product
     background-color: $product-page-background-color
     color: $product-page-text-color
@@ -30,9 +33,6 @@ body
   &.overlay-open
     overflow: hidden
 
-  * 
-    cursor: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), auto
-    
   &.maintenance-page
     cursor: auto !important
     text-align: center
@@ -46,17 +46,27 @@ body
     h1
       font-size: 56px
       
+      @media screen and (max-width: $break-small)
+        font-size: 32px
+      
     p
       font-size: 24px
       
+      @media screen and (max-width: $break-small)
+        font-size: 18px
+      
     .maintenance-social-links
       font-size: 16px
+      
+      @media screen and (max-width: $break-small)
+        font-size: 14px
       
       li
         display: inline-block
         
         @media screen and (max-width: $break-small)
           display: block
+          margin-bottom: 10px
       
       a
         cursor: pointer !important
@@ -69,6 +79,9 @@ body
 a
   color: $text-color
   text-decoration: none
+
+input, textarea
+  border-radius: 0
   
 ol, ul
   list-style: none
@@ -299,15 +312,17 @@ header
     text-align: center
 
 .cursor
-  +transform(translateZ(0) scale(.11))
-  +transition(transform .2s ease-in-out)
-  opacity: 0
-    
-.show-cursor .cursor
   +flexbox
   +align-items(center)
   +justify-content(center)
-  
+  +transform(translateZ(0) scale(.11))
+  +transition(transform .2s ease-in-out)
+  transform-origin: center
+  opacity: 0
+  height: 11px
+  width: 11px
+    
+.show-cursor .cursor
   background-color: $button-background-color
   border-radius: 50%
   color: $button-text-color
@@ -316,7 +331,7 @@ header
   line-height: 120px
   opacity: 1
   pointer-events: none
-  position: absolute
+  position: fixed
   text-align: center
   width: 120px
   z-index: 1000
@@ -328,8 +343,10 @@ header
   
   &.expanded
     +transform(scale(1))
-    +transition(transform .2s ease-in-out)
+    +transition(height .2s ease-in-out width .2s ease-in-out)
     transform-origin: 50% 50%
+    height: 120px
+    width: 120px
     
     .cursor-text
       font-size: 16px
