@@ -92,9 +92,11 @@ header
   width: 100%
   z-index: 97
   
+  @media screen and (max-width: $break-small)
+    position: relative
+  
   &.overlay-header
-    padding-left: 0
-    padding-right: 0
+    padding: 50px 0 15px
     position: relative
   
   .primary-header
@@ -102,6 +104,9 @@ header
     +align-items(center)
     +justify-content(space-between)
     padding: 50px 0 15px
+    
+    @media screen and (max-width: $break-small)
+      padding-top: 25px
     
   .secondary-header
     margin: 0 auto
@@ -116,16 +121,22 @@ header
     font-size: 56px
     line-height: 1.2em
     
+    @media screen and (max-width: $break-medium)
+      font-size: 48px
+    
     @media screen and (max-width: $break-small)
       font-size: 32px
     
   .cart-link
-    background: $button-background-color
+    background: $text-color
     border-radius: 100%
-    color: $button-text-color
+    color: $background-color
     display: block
-    font-size: 15px
-    padding: 10px 15px
+    height: 40px
+    font-size: 12px
+    padding: 14px 9px
+    text-align: center
+    width: 40px
     
     &.expanded
       +animation(growUp 1.5s .1s)
@@ -176,7 +187,10 @@ header
   width: 32px
   
   div
-    width: 30px
+    height: 32px
+    position: relative
+    top: 12px
+    width: 32px
     
   span
     +transform(rotate(0deg))
@@ -222,20 +236,23 @@ header
   line-height: 40px
   padding-top: 200px
   
+  @media screen and (max-width: $break-small)
+    padding-top: 0
+  
   img, iframe
     display: block
     max-width: 100%
 
 .custom-page-title
   display: none
-  font-size: 24px
+  font-size: 32px
   line-height: 1.2em
   text-align: center
   
   @media screen and (max-width: $break-medium)
     display: block
-    font-size: 18px
-      
+    font-size: 24px
+    
 .custom-page-content
   +flex(1 1 800px)
   padding: 0 100px
@@ -282,14 +299,15 @@ header
     text-align: center
 
 .cursor
-  +transform(translateZ(0))
+  +transform(translateZ(0) scale(.11))
+  +transition(transform .2s ease-in-out)
   opacity: 0
     
 .show-cursor .cursor
   +flexbox
   +align-items(center)
   +justify-content(center)
-  +transform(scale(.11))
+  
   background-color: $button-background-color
   border-radius: 50%
   color: $button-text-color
@@ -357,7 +375,7 @@ header
   left: 0
   opacity: 0
   overflow: auto
-  padding: 50px 7vw
+  padding: 0 7vw 100px
   position: fixed
   top: 0
   width: 100%
@@ -374,11 +392,15 @@ header
   .overlay-header
     +flexbox
     +justify-content(space-around)
-    +align-items(start)
-    height: 150px
+    +align-items(center)
+    padding: 50px 0
     position: relative
     
+    @media screen and (max-width: $break-small)
+      padding-top: 25px
+    
   .overlay-title
+    font-size: 16px
     position: absolute
     text-align: center
     
@@ -391,12 +413,18 @@ header
 
 .categories-list
   font-size: 32px
-  line-height: 64px
+  line-height: 48px
   text-align: center
+  
+  .category-link
+    margin-bottom: 16px
   
   @media screen and (max-width: $break-small)
     font-size: 24px
     line-height: 40px
+    
+    .category-link
+      margin-bottom: 12px
   
 .pages .page-nav-menu
   display: block
@@ -473,7 +501,6 @@ header
   display: inline-block
   font-size: 16px
   height: 60px
-  letter-spacing: 2px
   line-height: 60px
   outline: none
   text-align: center
@@ -496,7 +523,7 @@ header
   position: absolute
   top: 0
   width: 100%
-  z-index: 98
+  z-index: 97
   
   .flash-message-close
     margin-left: auto

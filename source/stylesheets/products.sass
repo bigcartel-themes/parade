@@ -20,13 +20,23 @@
   
   @media screen and (max-width: $break-medium)
     max-width: 80%
+    
+  @media screen and (max-width: $break-small)
+    max-width: 60%
   
   .product-status
     font-size: 24px
     line-height: 30px
     
+    @media screen and (max-width: $break-medium)
+      font-size: 16px
+    
   .product-name
-    font-size: 64px
+    font-size: 96px
+    line-height: 1.25em
+    
+    @media screen and (max-width: $break-medium)
+      font-size: 64px
     
     @media screen and (max-width: $break-small)
       font-size: 40px
@@ -43,12 +53,18 @@
     visibility: hidden
     width: 100%
     z-index: 30
+    
+    @media screen and (max-width: $break-small)
+      max-width: 80%
   
   &:nth-child(4n+1)
     margin-left: auto
     
 .product-card-spacer
-  height: 20vh
+  height: 30vh
+  
+  @media screen and (max-width: $break-small)
+    height: 15vh
     
 .show-product-title .product-info
   opacity: 1
