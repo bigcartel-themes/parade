@@ -163,7 +163,7 @@ $('.product-list').on( 'append.infiniteScroll', function( event, response, path,
       
     }
   })
-  Waypoints.refreshAll();
+  Waypoint.refreshAll();
 });
 
 
@@ -439,7 +439,11 @@ $('body')
     $('.arrow').hide();
   })
   .on('mouseenter mouseover','.flickity-slider, .single-product-image', function() {
-    $('.cursor').addClass('expanded').find('.cursor-text-caption').html($('.product-page-title').data('cursor-title'));
+    var cursor_action = $('.product-page-title').data('cursor-action');
+    if (cursor_action) { 
+      $('.cursor').addClass('expanded').find('.cursor-text-caption').html(cursor_action);
+    }
+    
   })
   .on('mouseleave','.flickity-slider, .single-product-image', function() {
     $('.cursor').removeClass('expanded');
