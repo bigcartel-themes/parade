@@ -216,13 +216,17 @@
     {% if page.permalink == 'home' or page.permalink == 'products' %}
       <div class="full-screen-overlay category-nav-overlay">
         <div class="overlay-header">
-          <button class="hamburger close-category-nav-overlay" type="button">
-            <div>
-            	<span></span>
-            	<span></span>
-            </div>
-          </button>
+          <div class="header-left">
+            <button class="hamburger close-category-nav-overlay" type="button">
+              <div>
+              	<span></span>
+              	<span></span>
+              </div>
+            </button>
+          </div>
           <div class="overlay-title">Select Category</div>
+          
+          <div class="header-placeholder">&nbsp;</div>
         </div>
         
         <div class="overlay-content centered-content">
