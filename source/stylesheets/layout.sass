@@ -24,7 +24,7 @@ body
   width: 100%
   
   * 
-    cursor: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7), auto
+    cursor: none !important
   
   &#product
     background-color: $product-page-background-color
@@ -72,10 +72,7 @@ body
         cursor: pointer !important
         display: block
         padding: 4px 10px
-    
-    *
-      cursor: auto !important
-
+        
 a
   color: $text-color
   text-decoration: none
@@ -104,9 +101,6 @@ header
   top: 0
   width: 100%
   z-index: 97
-  
-  @media screen and (max-width: $break-small)
-    position: relative
   
   &.overlay-header
     padding: 50px 0 15px
@@ -319,21 +313,19 @@ header
   +transition(transform .2s ease-in-out)
   transform-origin: center
   opacity: 0
-  height: 11px
-  width: 11px
+  height: 120px
+  width: 120px
     
 .show-cursor .cursor
   background-color: $button-background-color
   border-radius: 50%
   color: $button-text-color
   font-size: 16px
-  height: 120px
   line-height: 120px
   opacity: 1
   pointer-events: none
   position: fixed
   text-align: center
-  width: 120px
   z-index: 1000
 
   .cursor-text
@@ -344,9 +336,6 @@ header
   &.expanded
     +transform(scale(1))
     +transition(height .2s ease-in-out width .2s ease-in-out)
-    transform-origin: 50% 50%
-    height: 120px
-    width: 120px
     
     .cursor-text
       font-size: 16px
@@ -385,6 +374,7 @@ header
     visibility: visible
     
 .full-screen-overlay
+  -webkit-overflow-scrolling: touch
   +transition(all .5s cubic-bezier(.25,.1,.25,1))
   background-color: $background-color
   font-size: 20px
@@ -408,17 +398,19 @@ header
     
   .overlay-header
     +flexbox
-    +justify-content(space-around)
+    +justify-content(space-between)
     +align-items(center)
     padding: 50px 0
     position: relative
     
     @media screen and (max-width: $break-small)
       padding-top: 25px
+  
+  .header-placeholder
+    width: 40px
     
   .overlay-title
     font-size: 16px
-    position: absolute
     text-align: center
     
   .overlay-content
