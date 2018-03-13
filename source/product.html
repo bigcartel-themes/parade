@@ -9,13 +9,16 @@
 {% if product.status == 'active' %}
   <div class="full-screen-overlay product-option-overlay">
     <div class="overlay-header">
-      <button class="hamburger close-product-option-overlay" type="button">
-        <div>
-        	<span></span>
-        	<span></span>
-        </div>
-      </button>
+      <div class="header-left">
+        <button class="hamburger close-product-option-overlay" type="button">
+          <div>
+          	<span></span>
+          	<span></span>
+          </div>
+        </button>
+      </div>
       <div class="overlay-title">Select Option — {{ product.default_price | money: theme.money_format }}</div>
+      <div class="header-placeholder">&nbsp;</div>
     </div>
     
     <div class="overlay-content centered-content">
@@ -59,7 +62,7 @@
 
 {% if product.status == 'active' %}
   {% if product.has_default_option %}
-    <button class="button add-to-cart-button product-page-button" type="submit">
+    <button class="button add-to-cart-button product-page-button" type="submit" data-adding-text="Adding..." data-added-text="Added!">
       <span class="status-text">Add to Cart</span>
     </button>
   {% else %}
