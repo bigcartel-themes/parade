@@ -16,11 +16,8 @@
   max-width: 53%
   position: relative
   width: 100%
-  
-  @media screen and (max-width: $break-medium)
-    max-width: 80%
     
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: $break-medium)
     max-width: 60%
   
   .product-status
@@ -36,6 +33,9 @@
     
     @media screen and (max-width: $break-medium)
       font-size: 64px
+    
+    @media screen and (max-width: $break-medium) and (orientation: landscape)
+      font-size: 40px
     
     @media screen and (max-width: $break-small)
       font-size: 40px
