@@ -31,6 +31,12 @@
     font-size: 96px
     line-height: 1.25em
     
+    @media screen and (max-width: $break-extra-large)
+      font-size: 80px
+    
+    @media screen and (max-width: $break-large)
+      font-size: 72px
+    
     @media screen and (max-width: $break-medium)
       font-size: 64px
     
@@ -44,7 +50,7 @@
     +transform(translateX(-50%) translateY(-50%))
     +transition(all .2s cubic-bezier(.25,.1,.25,1))
     left: 50%
-    max-width: 50%
+    max-width: 80%
     opacity: 0
     position: fixed
     text-align: center
@@ -52,9 +58,6 @@
     visibility: hidden
     width: 100%
     z-index: 30
-    
-    @media screen and (max-width: $break-small)
-      max-width: 80%
   
   &:nth-child(4n+1)
     margin-left: auto

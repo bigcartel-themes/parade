@@ -268,9 +268,6 @@ header
   padding: 50px
   position: relative
   width: 100%
-  
-  @media screen and (max-width: $break-medium)
-    margin-top: 150px
     
   @media screen and (max-width: $break-small)
     padding: 50px 20px
@@ -304,8 +301,8 @@ header
     font-size: 24px
     
 .custom-page-content
-  +flex(1 1 800px)
-  padding: 0 100px
+  +flex(0 1 960px)
+  padding: 0 60px
   
   @media screen and (max-width: $break-medium)
     +flex(100%)
@@ -321,6 +318,9 @@ header
     
   a
     text-decoration: underline
+    
+  p
+    margin: 0 0 1em 0
   
 .empty-container
   flex: 1 0 200px
@@ -461,24 +461,30 @@ header
     +flexbox
     +justify-content(space-between)
     +align-items(center)
-    padding: 50px 0
-    position: relative
+    left: 0
+    padding: 50px 50px 15px
+    position: absolute
+    top: 0
+    width: 100%
     
     @media screen and (max-width: $break-small)
-      padding-top: 20px
+      padding: 20px 20px 15px
   
   .header-placeholder
-    width: 40px
+    height: 40px
     
   .overlay-title
     font-size: 16px
     text-align: center
     
   .overlay-content
+    +flexbox
+    margin: 200px auto 0
+    padding: 50px 0
     width: 100%
     
-    &.centered-content
-      margin: 0 auto
+    &.centered-content 
+      +justify-content(center)
       max-width: 800px
 
 .categories-list
