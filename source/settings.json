@@ -1,17 +1,22 @@
 {
   "name": "Parade",
-  "version": "0.0.26",
+  "version": "0.0.80",
   "images": [
     {
       "variable": "logo",
       "label": "Logo",
-      "description": "Adds your logo to the header"
+      "description": "Good for an image up to 120 pixels high"
     }
   ],
   "fonts": [
     {
       "variable": "primary_font",
       "label": "Primary Font",
+      "default": "Libre Baskerville"
+    },
+    {
+      "variable": "secondary_font",
+      "label": "Secondary Font",
       "default": "Libre Baskerville"
     }
   ],
@@ -61,14 +66,15 @@
         ["Fit", "fit"],
         ["Fill", "fill"]
       ],
-      "default": "fill",
+      "default": "fit",
       "description": "Sets the display of your product images"
     },
-        {
+    {
       "variable": "announcement_message_text",
-      "label": "Announcement message",
+      "label": "Announcement text",
       "type": "text",
-      "description": "Displays an announcement message"
+      "description": "Displays an announcement message",
+      "default": "This weekend spend $100 and get a gift with your purchase! No code needed."
     },
     {
       "variable": "money_format",
