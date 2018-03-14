@@ -101,12 +101,16 @@ ol, ul
     
 header
   background-color: transparent
-  padding-left: 7vw
-  padding-right: 7vw
+  padding-left: 50px
+  padding-right: 50px
   position: fixed
   top: 0
   width: 100%
   z-index: 97
+  
+  @media screen and (max-width: $break-small)
+    padding-left: 20px
+    padding-right: 20px
   
   &.overlay-header
     padding: 50px 0 15px
@@ -119,7 +123,7 @@ header
     padding: 50px 0 15px
     
     @media screen and (max-width: $break-small)
-      padding-top: 25px
+      padding-top: 20px
     
   .secondary-header
     margin: 0 auto
@@ -183,8 +187,7 @@ header
 #contact .secondary-header, .custom .secondary-header
   position: relative
   margin: 0 auto
-  max-width: 66%
-  top: -40px
+  max-width: 100%
 
 .open-category-nav
   display: block
@@ -262,12 +265,15 @@ header
 .main
   margin: 0 auto
   margin-top: 200px
-  padding: 50px 7vw
+  padding: 50px
   position: relative
   width: 100%
   
   @media screen and (max-width: $break-medium)
     margin-top: 150px
+    
+  @media screen and (max-width: $break-small)
+    padding: 50px 20px
   
 .page-nav-menu
   flex: 1 0 200px
@@ -283,10 +289,6 @@ header
   
   @media screen and (max-width: $break-medium)
     padding-top: 0
-  
-  img, iframe
-    display: block
-    max-width: 100%
 
 .custom-page-title
   display: none
@@ -312,6 +314,13 @@ header
     
   @media screen and (max-width: $break-small)
     font-size: 18px
+    
+  img, iframe
+    display: block
+    max-width: 100%
+    
+  a
+    text-decoration: underline
   
 .empty-container
   flex: 1 0 200px
@@ -320,8 +329,12 @@ header
     display: none
 
 .wrapper
-  padding-left: 7vw
-  padding-right: 7vw
+  padding-left: 50px
+  padding-right: 50px
+  
+  @media screen and (max-width: $break-small)
+    padding-left: 20px
+    padding-right: 20px
   
 .intro-overlay
   +flexbox
@@ -332,7 +345,7 @@ header
   height: 100%
   left: 0
   line-height: 92px
-  padding: 0 7vw
+  padding: 0 50px
   position: fixed
   top: 0
   width: 100%
@@ -341,6 +354,7 @@ header
   @media screen and (max-width: $break-small)
     font-size: 40px
     line-height: 52px
+    padding: 0 20px
   
   &.preload
     background-color: $background-color
@@ -374,7 +388,7 @@ header
 
   .cursor-text
     font-size: 0px
-    line-height: 18px
+    line-height: 20px
     opacity: 0
   
   &.expanded
@@ -426,12 +440,15 @@ header
   left: 0
   opacity: 0
   overflow: auto
-  padding: 0 7vw 100px
+  padding: 0 50px 100px
   position: fixed
   top: 0
   width: 100%
   visibility: hidden
   z-index: 98
+  
+  @media screen and (max-width: $break-small)
+    padding: 0 20px 50px
   
   &.show
     opacity: 1
@@ -448,7 +465,7 @@ header
     position: relative
     
     @media screen and (max-width: $break-small)
-      padding-top: 25px
+      padding-top: 20px
   
   .header-placeholder
     width: 40px
@@ -574,7 +591,7 @@ header
   font-size: 14px
   left: 0
   line-height: 18px
-  padding: 20px 7vw
+  padding: 20px 50px
   position: absolute
   top: 0
   width: 100%

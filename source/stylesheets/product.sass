@@ -116,9 +116,9 @@
   left: 50%
   line-height: 40px
   position: absolute
-  top: calc(100vh + 50px)
+  top: calc(100vh + 200px)
   max-width: calc(800px + 14vw)
-  padding: 0 7vw
+  padding: 0 7vw 200px
   width: 100%
   
   @media screen and (max-width: $break-small)
@@ -138,14 +138,19 @@
 
 .product-form
   .options-list
-    line-height: 36px
+    font-size: 32px
+    line-height: 48px
     text-align: center
     
-    li
-      padding: 10px 3px
+    .options-link
+      margin-bottom: 16px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 24px
+      line-height: 40px
       
-      &:hover
-        opacity: .6
+      .options-link
+        margin-bottom: 12px
   
 .product-quantity
   display: none
@@ -175,7 +180,7 @@
 
 .show-mobile-portrait
   display: none
-  padding: 0 7vw
+  padding: 0 50px
   text-align: center
   
   @media screen and (max-width: $break-medium) and (orientation: portrait)

@@ -42,9 +42,9 @@
             {% case product.status %}
               {% when 'active' %}
                 {% if product.has_default_option %}
-                  {% assign cursor_action = 'Add to Cart' %}
+                  {% assign cursor_action = 'Add to<br />Cart' %}
                 {% else %}
-                  {% assign cursor_action = 'Select Option' %}
+                  {% assign cursor_action = 'Select<br />Option' %}
                 {% endif %}
             {% endcase %}
             <div class="product-page-title" data-cursor-action="{{ cursor_action }}">{{ page.name }}</div>
