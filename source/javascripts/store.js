@@ -346,13 +346,6 @@ $(window).on('resize', function() {
   productImages.flickity('resize');
 });
 
-$(function() {
-  if ($('.has-top-margin').length) { 
-    var header_height = $('header').height();
-    $('.has-top-margin').css('padding-top',header_height + 40 + 'px');
-  }
-});
-
 $('.option-item:not(.sold-out)').click(function(e) { 
   var option_id = $(this).data("option-id");
   if (option_id > 0) { 
