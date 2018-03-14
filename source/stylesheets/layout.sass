@@ -89,9 +89,15 @@ ol, ul
   color: $error-text
   font-family: $primary-font
   font-size: 16px
-  line-height: 20px
+  line-height: 24px
   margin-bottom: 40px
   text-align: center
+  
+  li
+    margin-bottom: 10px
+  
+  &.home-errors
+    margin-bottom: 100px
     
 header
   background-color: transparent
@@ -181,6 +187,9 @@ header
   display: block
   font-size: 16px
   
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+  
 .hamburger
   +transform(rotate(0deg))
   +transition(.5s ease-in-out)
@@ -192,6 +201,9 @@ header
   padding: 0
   position: relative
   width: 32px
+  
+  &.open-page-nav
+    display: none
   
   div
     height: 32px
@@ -224,6 +236,26 @@ header
     span:nth-child(2)
       +transform(rotate(45deg))
 
+#home, #products
+  .open-page-nav
+    display: block
+
+  .return-home-link
+    display: none
+    
+#contact, .custom
+  .open-page-nav
+    display: none
+    
+    @media screen and (max-width: $break-medium)
+      display: block
+  
+  .return-home-link
+    display: block
+    
+    @media screen and (max-width: $break-medium)
+      display: none
+    
 .main
   margin: 0 auto
   padding: 50px 7vw
@@ -241,9 +273,8 @@ header
   +flexbox
   font-size: 24px
   line-height: 40px
-  padding-top: 200px
   
-  @media screen and (max-width: $break-small)
+  @media screen and (max-width: $break-medium)
     padding-top: 0
   
   img, iframe
@@ -259,6 +290,7 @@ header
   @media screen and (max-width: $break-medium)
     display: block
     font-size: 24px
+    margin-bottom: 40px
     
 .custom-page-content
   +flex(1 1 800px)
@@ -268,6 +300,9 @@ header
     +flex(100%)
     max-width: 100%
     padding: 0
+    
+  @media screen and (max-width: $break-small)
+    font-size: 18px
   
 .empty-container
   flex: 1 0 200px
@@ -464,23 +499,24 @@ header
       padding: 5px 0
     
   &.pages-links li
-  
-    &:before
-      +transform(translateY(-50%))
-      +transition(all .5s)
-      border: 1px solid transparent
-      content: " "
-      left: 0
-      position: absolute
-      top: 50%
-      width: 0px
-  
-    &.selected, &:hover
-      padding-left: 30px
-      
+    
+    @media screen and (min-width: $break-medium)
       &:before
-        border: 1px solid $text-color
-        width: 20px
+        +transform(translateY(-50%))
+        +transition(all .5s)
+        border: 1px solid transparent
+        content: " "
+        left: 0
+        position: absolute
+        top: 50%
+        width: 0px
+    
+      &.selected, &:hover
+        padding-left: 30px
+        
+        &:before
+          border: 1px solid $text-color
+          width: 20px
       
 .social-links
   font-size: 14px

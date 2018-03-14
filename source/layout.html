@@ -13,21 +13,18 @@
     <header class="header-wrapper layout-header">
       <div class="primary-header">
         <div class="header-left">
-          {% if page.full_url contains '/product/' or page.category == 'custom' or page.permalink == 'contact' %}
-            <button class="hamburger is-active return-home-link" type="button">
-              <div>
-              	<span></span>
-              	<span></span>
-              </div>
-            </button>
-          {% else %}
-            <button class="hamburger open-page-nav" type="button">
-              <div>
-              	<span></span>
-              	<span></span>
-              </div>
-            </button>
-          {% endif %}
+          <button class="hamburger is-active return-home-link" type="button">
+            <div>
+            	<span></span>
+            	<span></span>
+            </div>
+          </button>
+          <button class="hamburger open-page-nav" type="button">
+            <div>
+            	<span></span>
+            	<span></span>
+            </div>
+          </button>
         </div>
         
         <div class="header-center">
@@ -77,7 +74,7 @@
       </div>
     </header>
     
-    <div class="main">
+    <div class="main {% if page.category == 'custom' or page.permalink == 'contact' or page.permalink == 'home' or page.permalink == 'products' %} has-top-margin{% endif %}">
       {% if page.category == 'custom' or page.permalink == 'contact' %}
         <div class="page-nav-menu">
           
