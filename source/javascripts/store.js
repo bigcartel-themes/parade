@@ -24,15 +24,14 @@ String.prototype.hashCode = function() {
   return hash;
 };
 
-if (announcementMessage) { 
-  var hashedMessage = announcementMessage.hashCode();
-  var cookieValue = getCookie('hide-announcement-message');
-  if (cookieValue == hashedMessage) {
-    // Do not show
-  }
-  else { 
-    $('body').addClass('has-flash-message');
-  }
+if (typeof announcementMessage !== "undefined") {
+  if (announcementMessage) { 
+    var hashedMessage = announcementMessage.hashCode();
+    var cookieValue = getCookie('hide-announcement-message');
+    if (cookieValue && cookieValue != hashedMessage) {
+      $('body').addClass('has-flash-message');
+    }
+  } 
 }
         
 function setCookie(name,value,days) {
