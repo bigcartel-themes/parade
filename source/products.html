@@ -16,7 +16,7 @@
           <img class="product-thumbnail-image" alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 2000 }}">
           <div class="product-info">
             <div class="product-status">{% if product_status != blank %}{{ product_status }}  — {% endif%}{{ product.default_price | money: theme.money_format | strip_html }}</div>
-            <div class="product-name">{{ product.name }}</div>
+            <div class="product-name">{{ product.name truncate: 60 }}</div>
           </div>
         </a>
       </li>
