@@ -52,6 +52,16 @@
       "default": "#111111"
     },
     {
+      "variable": "announcement_text_color",
+      "label": "Announcement Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "announcement_background_color",
+      "label": "Announcement Background",
+      "default": "#000000"
+    },
+    {
       "variable": "error_text_color",
       "label": "Error Text",
       "default": "#AF5F55"

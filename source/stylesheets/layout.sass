@@ -32,6 +32,9 @@ body
     
     .cart-link
       color: $product-page-background-color
+    
+    &>header .hamburger span
+      background-color: $product-page-text-color
 
   &.overlay-open
     overflow: hidden
@@ -210,7 +213,7 @@ header
   
   @media screen and (max-width: $break-small)
     font-size: 14px
-  
+
 .hamburger
   +transform(rotate(0deg))
   +transition(.5s ease-in-out)
@@ -235,11 +238,11 @@ header
   span
     +transform(rotate(0deg))
     +transition(.3s all)
+    background-color: $text-color
     display: block
     position: absolute
     height: 2px
     width: 100%
-    background: #000000
     opacity: 1
     left: 0
     
@@ -622,8 +625,8 @@ header
      
 .has-flash-message .flash-message
   +flexbox
-  background-color: $button-background-color
-  color: $button-text-color
+  background-color: $announcement-background-color
+  color: $announcement-text-color
   font-size: 14px
   left: 0
   line-height: 18px
