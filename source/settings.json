@@ -1,6 +1,6 @@
 {
   "name": "Parade",
-  "version": "0.0.80",
+  "version": "0.0.98",
   "images": [
     {
       "variable": "logo",
@@ -73,8 +73,7 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
-      "description": "Displays an announcement message",
-      "default": "This weekend spend $100 and get a gift with your purchase! No code needed."
+      "description": "Displays an announcement message"
     },
     {
       "variable": "money_format",
@@ -91,15 +90,13 @@
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
-      "description": "Ex: http://twitter.com/bigcartel",
-      "default": "http://blah.com"
+      "description": "Ex: http://twitter.com/bigcartel"
     },
     {
       "variable": "facebook_url",
       "label": "Facebook URL",
       "type": "text",
-      "description": "Ex: http://facebook.com/bigcartel",
-      "default": "http://blah.com"
+      "description": "Ex: http://facebook.com/bigcartel"
     },
     {
       "variable": "tumblr_url",
@@ -111,15 +108,13 @@
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel",
-      "default": "http://blah.com"
+      "description": "Ex: http://instagram.com/bigcartel"
     },
     {
       "variable": "pinterest_url",
       "label": "Pinterest URL",
       "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel",
-      "default": "http://blah.com"
+      "description": "Ex: http://pinterest.com/bigcartel"
     }
   ],
   "checkout": {
@@ -132,6 +127,7 @@
     "title_color": "{{ text_color }}",
     "title_background_color": "{{ background_color }}",
     "title_vertical_padding": "27px",
+    "accent_background_color": "{{ background_color }}",
     "background_color": "{{ background_color }}",
     "body_font": "{{ primary_font }}",
     "body_font_size": "14px",
@@ -143,7 +139,6 @@
     "step_inactive_header_color": " {{ text_color }}",
     "step_header_font": "{{ primary_font }}",
     "step_background_color": "{{ background_color }}",
-    "background_color": "{{ background_color }}",
     "content_header_background_color": "{{ background_color }}",
     "content_header_color": "{{ text_color }}",
     "content_color": "{{ text_color }}",
@@ -166,15 +161,13 @@
     "input_border_radius": "0px",
     "input_border_width": "2px",
     "input_font": "{{ primary_font }}",
-    "accent_background_color": "{{ text_color }}",
+    "button_color": "{{ button_text_color }}",
     "button_border_width": "0px",
     "button_border_radius": "0px",
-    "button_font": "{{ primary_font }}",
-    "button_hover_color": "{{ text_color }}",
-    "accent_background_color": "{{ background_color }}",
-    "button_hover_background_color": "{{ background_color }}",
-    "button_border_color": "{{ background_color }}",
-    "button_hover_border_color": "{{ background_color }}",
+    "button_font": "{{ secondary_font }}",
+    "button_hover_color": "{{ button_text_color }}",
+    "button_background_color": "{{ button_background_color }}",
+    "button_hover_background_color": "{{ button_background_color }}",
     "button_text_transform": "none",
     "link_color": "{{ text_color }}",
     "link_hover_color": "{{ text_color }}",
