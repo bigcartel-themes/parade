@@ -63,11 +63,13 @@ addProductCardSpacer = function(element) {
     element: element,
     enter: function(direction) {
       $('.product-card').removeClass('show-product-title');
+      //console.log('product card spacer ' + $(element).data('title') + ' enter ' + direction);
     },
     entered: function(direction) {
-
+      //console.log('product card spacer ' + $(element).data('title') + ' entered ' + direction);
     },
     exit: function(direction) {
+      //console.log('product card spacer ' + $(element).data('title') + ' exit ' + direction);
       if (direction == "up") {
         $(element).prev().addClass('show-product-title');
       }
@@ -76,7 +78,7 @@ addProductCardSpacer = function(element) {
       }
     },
     exited: function(direction) {
-
+      //console.log('product card spacer ' + $(element).data('title') + ' exited ' + direction);
     }
   })
 }
@@ -85,18 +87,18 @@ addProductCard = function(element) {
   var inview = new Waypoint.Inview({
     element: element,
     enter: function(direction) {
-      $(element).addClass('show-product-title')
+      $(element).addClass('show-product-title');
+      //console.log($(element).data('title') + ' enter ' + direction);
     },
     entered: function(direction) {
-      
+      //console.log($(element).data('title') + ' entered ' + direction);
     },
     exit: function(direction) {
+      console.log($(element).data('title') + ' exit ' + direction);
       if (direction == "up") { 
         $('.product-card').removeClass('show-product-title');
+        
       }
-    },
-    exited: function(direction) {
-
     }
   })
 }
@@ -109,6 +111,15 @@ $(".product-card-spacer").each(function(index, element) {
 });
 
 
+/*
+var infinite = new Waypoint.Infinite({
+  element: $('.product-list')[0],
+  items: '.product-list li',
+  more: '.next-button'
+})
+*/
+
+/*
 $('.product-list').infiniteScroll({
   path: '.next-button',
   append: '.product-list li',
@@ -120,16 +131,16 @@ $('.product-list').infiniteScroll({
 
 
 $('.product-list').on( 'append.infiniteScroll', function( event, response, path, items ) {
-  $(items).each(function(index, element) {
-    var this_element = $(element);
-    if (this_element.hasClass('product-card')) {
-      addProductCard(element);  
-    }
-    if (this_element.hasClass('product-card-spacer')) { 
-      addProductCardSpacer(element);
-    }
-  })
+  Waypoint.destroyAll();
+  $(".product-card").each(function(index, element) {
+    addProductCard(element);
+  });
+  $(".product-card-spacer").each(function(index, element) {
+    addProductCardSpacer(element);
+  });
+  Waypoint.refreshAll()
 });
+*/
 
 
 var openOverlay = function(overlay_name) { 

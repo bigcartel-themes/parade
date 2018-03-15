@@ -278,6 +278,10 @@ header
 .page-nav-menu
   flex: 1 0 200px
   
+  @media screen and (max-width: $break-medium)
+    flex: none
+    width: 100%
+  
 @media screen and (max-width: $break-medium)
   .main > .page-nav-menu
     display: none
@@ -475,6 +479,7 @@ header
   
   .header-placeholder
     height: 40px
+    width: 40px
     
   .overlay-title
     font-size: 16px
