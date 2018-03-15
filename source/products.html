@@ -23,9 +23,7 @@
       <li class="product-card-spacer"></li>
       {% endfor %}
     </ul>
-    
-    <div class="infinite-scroll-last">Back to top</div>
-    
+
     {% if paginate.pages > 1 %}
       <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
       <div class="page-load-status" style="display: none;">

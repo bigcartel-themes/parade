@@ -74,6 +74,7 @@ addProductCardSpacer = function(element) {
     },
     offset: '50%'
   })
+  Waypoint.refreshAll();
 }
 
 addProductCard = function(element) {
@@ -93,6 +94,7 @@ addProductCard = function(element) {
     },
     offset: '50%'
   })
+  Waypoint.refreshAll();
 }
 
 $(".product-card").each(function(index, element) {
@@ -103,36 +105,29 @@ $(".product-card-spacer").each(function(index, element) {
 });
 
 
-/*
-var infinite = new Waypoint.Infinite({
-  element: $('.product-list')[0],
-  items: '.product-list li',
-  more: '.next-button'
-})
-*/
 
-/*
 $('.product-list').infiniteScroll({
   path: '.next-button',
   append: '.product-list li',
   hideNav: '.pagination',
   status: '.page-load-status',
-  debug: false
+  debug: false,
+  scrollThreshold: 800
 });
 
 
 
 $('.product-list').on( 'append.infiniteScroll', function( event, response, path, items ) {
-  Waypoint.destroyAll();
+
   $(".product-card").each(function(index, element) {
     addProductCard(element);
   });
   $(".product-card-spacer").each(function(index, element) {
     addProductCardSpacer(element);
   });
-  Waypoint.refreshAll()
+
 });
-*/
+
 
 
 var openOverlay = function(overlay_name) { 
