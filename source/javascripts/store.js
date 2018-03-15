@@ -57,48 +57,41 @@ function eraseCookie(name) {
   document.cookie = name+'=; Max-Age=-99999999;';  
 }
 
-addProductCardSpacer = function(element) { 
-  var inview = new Waypoint.Inview({
+addProductCardSpacer = function(element) {
+  var waypoint = new Waypoint({
     element: element,
-    enter: function(direction) {
-      $('.product-card').removeClass('show-product-title');
-      //console.log('product card spacer ' + $(element).data('title') + ' enter ' + direction);
-    },
-    entered: function(direction) {
-      //console.log('product card spacer ' + $(element).data('title') + ' entered ' + direction);
-    },
-    exit: function(direction) {
-      //console.log('product card spacer ' + $(element).data('title') + ' exit ' + direction);
-      if (direction == "up") {
+    handler: function(direction) {
+      //console.log('Product card spacer direction: ' + direction)
+      if (direction == "up") { 
+        //console.log("Show previous product card");
         $(element).prev().addClass('show-product-title');
       }
       if (direction == "down") { 
+        //console.log("Hide all product cards");
         $('.product-card').removeClass('show-product-title');
       }
+      
     },
-    exited: function(direction) {
-      //console.log('product card spacer ' + $(element).data('title') + ' exited ' + direction);
-    }
+    offset: '50%'
   })
 }
 
 addProductCard = function(element) {
-  var inview = new Waypoint.Inview({
+  var waypoint = new Waypoint({
     element: element,
-    enter: function(direction) {
-      $(element).addClass('show-product-title');
-      //console.log($(element).data('title') + ' enter ' + direction);
-    },
-    entered: function(direction) {
-      //console.log($(element).data('title') + ' entered ' + direction);
-    },
-    exit: function(direction) {
-      console.log($(element).data('title') + ' exit ' + direction);
+    handler: function(direction) {
+      //console.log('Product card direction: ' + direction)
       if (direction == "up") { 
+        //console.log("Hide all product cards");
         $('.product-card').removeClass('show-product-title');
-        
       }
-    }
+      if (direction == "down") { 
+        //console.log("Show this product card");
+        $(element).addClass('show-product-title');
+      }
+      
+    },
+    offset: '50%'
   })
 }
 
@@ -495,7 +488,7 @@ $('body')
   })
 
 $('.main').on( 'click','.infinite-scroll-last', function(e) {
-  $('html').animate({ scrollTop: 0 }, 200);
+  $('html, body').animate({ scrollTop: 0 }, 200);
 })
 
 

@@ -38,9 +38,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
       }, {
         down: 'exited',
         up: 'enter',
-        offset: function() {
-          return -this.adapter.outerHeight()
-        }
+        offset: '50%'
       }],
       horizontal: [{
         right: 'enter',

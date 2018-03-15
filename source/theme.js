@@ -1,5 +1,5 @@
 //= require javascripts/vendor/jquery.waypoints
-//= require javascripts/vendor/inview
+
 
 //= require javascripts/vendor/infinite-scroll.pkgd.min
 
