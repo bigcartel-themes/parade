@@ -66,7 +66,7 @@
         ["Fit", "fit"],
         ["Fill", "fill"]
       ],
-      "default": "fit",
+      "default": "fill",
       "description": "Sets the display of your product images"
     },
     {

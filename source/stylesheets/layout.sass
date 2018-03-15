@@ -81,7 +81,18 @@ a
   text-decoration: none
 
 input, textarea
+  appearance: none
+  background-color: $background-color
+  border: none
+  border-bottom: 1px solid $text-color
   border-radius: 0
+  color: $text-color
+  font-size: 15px
+  padding: 12px 0
+  width: 100%
+  
+  &:active, &:focus
+    outline: none
   
 ol, ul
   list-style: none
@@ -93,6 +104,7 @@ ol, ul
   font-family: $primary-font
   font-size: 16px
   line-height: 24px
+  list-style: none
   margin-bottom: 40px
   text-align: center
   
@@ -318,7 +330,8 @@ header
     
   @media screen and (max-width: $break-small)
     font-size: 18px
-    
+
+.custom-page    
   img, iframe
     display: block
     max-width: 100%
