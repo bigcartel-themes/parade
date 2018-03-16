@@ -2,7 +2,6 @@
 
 *
   box-sizing: border-box
-  cursor: none !important
   
 html
   -webkit-tap-highlight-color: rgba(0,0,0,0)
@@ -14,7 +13,7 @@ html
 body
   background-color: $background-color
   color: $text-color
-  cursor: none !important
+  cursor: default
   font-family: $primary-font
   font-size: 14px
   height: 100%
@@ -23,14 +22,15 @@ body
   padding: 0
   width: 100%
   
-  * 
+  &.show-cursor *
     cursor: none !important
-  
+    
   &#product
     background-color: $product-page-background-color
     color: $product-page-text-color
     
     .cart-link
+      background-color: $product-page-text-color
       color: $product-page-background-color
     
     &>header .hamburger span
@@ -369,6 +369,7 @@ header
   +align-items(center)
   +justify-content(center)
   background-color: $background-color
+  color: $text-color
   font-size: 80px
   height: 100%
   left: 0
@@ -426,6 +427,10 @@ header
     .cursor-text
       font-size: 16px
       opacity: 1
+      
+  &.small-expanded
+    +transform(scale(.15))
+    +transition(height .2s ease-in-out width .2s ease-in-out)
 
 .arrow
   display: none
@@ -564,6 +569,12 @@ header
       padding: 5px 0
     
   &.pages-links li
+  
+    &.mobile-products-link
+      display: none
+      
+      @media screen and (max-width: $break-medium)
+        display: block
     
     @media screen and (min-width: $break-medium)
       &:before
@@ -625,16 +636,32 @@ header
      
 .has-flash-message .flash-message
   +flexbox
+  +align-items(center)
   background-color: $announcement-background-color
   color: $announcement-text-color
-  font-size: 14px
+  font-size: 16px
   left: 0
-  line-height: 18px
-  padding: 20px 50px
+  line-height: 26px
+  padding: 14px 50px
   position: absolute
   top: 0
   width: 100%
   z-index: 97
   
+  @media screen and (max-width: $break-small)
+    padding: 14px 25px
+  
+  .flash-message-text
+    text-align: center
+    width: calc(100% - 100px)
+    
+    @media screen and (max-width: $break-small)
+      width: calc(100% - 50px)
+  
   .flash-message-close
-    margin-left: auto
+    position: relative
+    
+    svg
+      fill: $announcement-text-color
+      height: 14px
+      width: 14px

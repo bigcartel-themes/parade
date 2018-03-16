@@ -3,7 +3,7 @@
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui' name='viewport'>
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
     {{ head_content }}
@@ -13,13 +13,13 @@
     <header class="header-wrapper layout-header">
       <div class="primary-header">
         <div class="header-left">
-          <button class="hamburger is-active return-home-link" type="button">
+          <button class="hamburger is-active return-home-link grow-cursor" type="button">
             <div>
             	<span></span>
             	<span></span>
             </div>
           </button>
-          <button class="hamburger open-page-nav" type="button">
+          <button class="hamburger open-page-nav grow-cursor" type="button">
             <div>
             	<span></span>
             	<span></span>
@@ -32,9 +32,9 @@
             <div class="products-page-title">
               {% if categories.active != blank or artists.active != blank %}
                 {% if page.permalink == 'home' or page.full_url contains '/products' %}
-                  <a href="#" class="open-category-nav">View — All</a>
+                  <a href="#" class="open-category-nav grow-cursor">View — All</a>
                 {% else %}
-                  <a href="#" class="open-category-nav">View — {{ page.name }}</a>
+                  <a href="#" class="open-category-nav grow-cursor">View — {{ page.name }}</a>
                 {% endif %}
               {% endif %}
             </div>
@@ -53,7 +53,7 @@
         
         <div class="header-right">
           <div class="open-cart">
-            <a class="cart-link{% if cart.item_count == 0 %} hidden{% endif %}" href="/cart" title="View Cart">{{ cart.item_count }}</a>
+            <a class="cart-link grow-cursor{% if cart.item_count == 0 %} hidden{% endif %}" href="/cart" title="View Cart">{{ cart.item_count }}</a>
           </div>
         </div>
       </div>
@@ -65,9 +65,9 @@
           <div class="product-page-subtitle">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
         {% else %}
           {% if theme.logo != blank %}
-            <a class="store-link" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
+            <a class="store-link grow-cursor" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
           {% else %}
-            <a class="store-link" href="/" title="{{ store.name | escape }}">{{ store.name }}</a>
+            <a class="store-link grow-cursor" href="/" title="{{ store.name | escape }}">{{ store.name }}</a>
           {% endif %}
         {% endif %}
 
@@ -80,40 +80,40 @@
           
           <ul class="pages-links link-list">
             {% for page in pages.all %}
-              <li{% if page.full_url contains page.url %} class="selected"{% endif %}>{{ page | link_to }}</li>
+              <li class="grow-cursor{% if page.full_url contains page.url %} selected{% endif %}">{{ page | link_to }}</li>
             {% endfor %}
-            <li{% if page.full_url contains '/contact' %} class="selected"{% endif %}><a href="/contact" title="Contact">Contact</a></li>
+            <li class="grow-cursor {% if page.full_url contains '/contact' %} selected{% endif %}"><a href="/contact" title="Contact">Contact</a></li>
           </ul>
           
           {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
             <ul class="social-links link-list">
               {% if theme.instagram_url != blank %}
-                <li><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
               {% endif %}
               
               {% if theme.twitter_url != blank %}
-                <li><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
               {% endif %}
               
               {% if theme.facebook_url != blank %}
-                <li><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
               {% endif %}
       
               {% if theme.pinterest_url != blank %}
-                <li><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
               {% endif %}
               
               {% if theme.tumblr_url != blank %}
-                <li><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
               {% endif %}
               
               {% if store.website != blank %}
-                <li><a href="{{ store.website }}">Back to site</a></li>
+                <li><a class="grow-cursor" href="{{ store.website }}">Back to site</a></li>
               {% endif %}
             </ul>
           {% endif %}
   
-          <div class="credit">{{ bigcartel_credit }}</div>
+          <div class="credit grow-cursor">{{ bigcartel_credit }}</div>
           
         </div>
       
@@ -158,7 +158,7 @@
 
     <div class="full-screen-overlay page-nav-overlay">
       <div class="overlay-header">
-        <button class="hamburger close-page-nav-overlay" type="button">
+        <button class="grow-cursor hamburger close-page-nav-overlay" type="button">
           <div>
           	<span></span>
           	<span></span>
@@ -168,41 +168,42 @@
       <div class="overlay-content">
         <div class="page-nav-menu">
           <ul class="pages-links link-list">
+            <li class="mobile-products-link grow-cursor"><a href="/products" title="Shop">Shop</a></li>
             {% for page in pages.all %}
-              <li>{{ page | link_to }}</li>
+              <li class="grow-cursor">{{ page | link_to }}</li>
             {% endfor %}
-            <li><a href="/contact" title="Contact">Contact</a></li>
+            <li class="grow-cursor"><a href="/contact" title="Contact">Contact</a></li>
           </ul>
         
           {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
             <ul class="social-links link-list">
               {% if theme.instagram_url != blank %}
-                <li><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
               {% endif %}
               
               {% if theme.twitter_url != blank %}
-                <li><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
               {% endif %}
               
               {% if theme.facebook_url != blank %}
-                <li><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
               {% endif %}
       
               {% if theme.pinterest_url != blank %}
-                <li><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
               {% endif %}
               
               {% if theme.tumblr_url != blank %}
-                <li><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                <li><a class="grow-cursor" target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
               {% endif %}
               
               {% if store.website != blank %}
-                <li><a href="{{ store.website }}">Back to site</a></li>
+                <li><a class="grow-cursor" href="{{ store.website }}">Back to site</a></li>
               {% endif %}
             </ul>
           {% endif %}
   
-          <div class="credit">{{ bigcartel_credit }}</div>
+          <div class="credit grow-cursor">{{ bigcartel_credit }}</div>
         </div>
         <div class="custom-page-content custom-page-overlay"></div>
         
@@ -230,9 +231,9 @@
           {% if categories.active != blank %}
             <div class="categories-list">
               <ul class="dropdown-links">
-                <li class="category-link"><a href="/products" title="Products">All Products</a></li>
+                <li class="grow-cursor category-link"><a href="/products" title="Products">All Products</a></li>
                 {% for category in categories.active %}
-                  <li class="category-link">{{ category | link_to }}</li>
+                  <li class="grow-cursor category-link">{{ category | link_to }}</li>
                 {% endfor %}
               </ul>
             </div>
@@ -264,7 +265,9 @@
     {% if theme.announcement_message_text != blank %}
       <div class="flash-message">
         <div class="flash-message-text">{{ theme.announcement_message_text }}</div>
-        <div class="flash-message-close">X</div>
+        <div class="flash-message-close grow-cursor">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M10 1.1L8.9 0 5 3.9 1.1 0 0 1.1 3.9 5 0 8.9 1.1 10 5 6.1 8.9 10 10 8.9 6.1 5z"/></svg>
+        </div>
       </div>
       <script>
         var announcementMessage = '{{ theme.announcement_message_text }}';
