@@ -117,35 +117,28 @@ ol, ul
   &.home-errors
     margin-bottom: 100px
     
-header
+.header
   background-color: transparent
-  padding-left: 50px
-  padding-right: 50px
+  padding: 50px
   position: fixed
   top: 0
   width: 100%
   z-index: 97
   
   @media screen and (max-width: $break-small)
-    padding-left: 20px
-    padding-right: 20px
+    padding: 20px
   
   &.overlay-header
-    padding: 50px 0 15px
     position: relative
   
   .primary-header
     +flexbox
     +align-items(center)
     +justify-content(space-between)
-    padding: 50px 0 15px
-    
-    @media screen and (max-width: $break-small)
-      padding-top: 20px
-    
+    margin-bottom: 15px
+
   .secondary-header
     margin: 0 auto
-    max-width: 80%
     text-align: center
   
   .header-center
@@ -179,13 +172,17 @@ header
     &.hidden
       opacity: 0
       visibility: hidden
-
-.has-flash-message header
-  top: 50px
-
-.has-flash-message .overlay-header
-  top: 50px
+      
+.has-flash-message > header
+  +transition(0.2s padding ease-out)
+  padding-top: 100px
   
+  &.smaller
+    padding-top: 50px
+    
+    @media screen and (max-width: $break-small)
+      padding-top: 20px
+
 .store-logo
   max-height: 120px
   
@@ -473,15 +470,11 @@ header
   left: 0
   opacity: 0
   overflow: auto
-  padding: 0 50px 100px
   position: fixed
   top: 0
   width: 100%
   visibility: hidden
   z-index: 98
-  
-  @media screen and (max-width: $break-small)
-    padding: 0 20px 50px
   
   &.show
     opacity: 1
@@ -495,13 +488,9 @@ header
     +justify-content(space-between)
     +align-items(center)
     left: 0
-    padding: 50px 50px 15px
     position: absolute
     top: 0
     width: 100%
-    
-    @media screen and (max-width: $break-small)
-      padding: 20px 20px 15px
   
   .header-placeholder
     height: 40px
@@ -514,11 +503,16 @@ header
   .overlay-content
     +flexbox
     margin: 200px auto 0
-    padding: 50px 0
+    padding: 50px
     width: 100%
+    
+    
     
     @media screen and (max-width: $break-medium)
       margin-top: 100px
+      
+    @media screen and (max-width: $break-small)
+      padding: 20px
     
     &.centered-content 
       +justify-content(center)
@@ -637,6 +631,7 @@ header
 .has-flash-message .flash-message
   +flexbox
   +align-items(center)
+  +justify-content(center)
   background-color: $announcement-background-color
   color: $announcement-text-color
   font-size: 16px
@@ -649,6 +644,7 @@ header
   z-index: 97
   
   @media screen and (max-width: $break-small)
+    font-size: 14px
     padding: 14px 25px
   
   .flash-message-text
@@ -659,7 +655,11 @@ header
       width: calc(100% - 50px)
   
   .flash-message-close
-    position: relative
+    position: absolute
+    right: 50px
+    
+    @media screen and (max-width: $break-small)
+      right: 20px
     
     svg
       fill: $announcement-text-color

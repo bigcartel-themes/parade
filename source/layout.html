@@ -10,7 +10,7 @@
   </head>
 
   <body id="{{ page.permalink }}" class="{{ page.category }}">
-    <header class="header-wrapper layout-header">
+    <header class="header header-wrapper layout-header">
       <div class="primary-header">
         <div class="header-left">
           <button class="hamburger is-active return-home-link grow-cursor" type="button">
@@ -157,7 +157,7 @@
     
 
     <div class="full-screen-overlay page-nav-overlay">
-      <div class="overlay-header">
+      <div class="header overlay-header">
         <button class="grow-cursor hamburger close-page-nav-overlay" type="button">
           <div>
           	<span></span>
@@ -213,7 +213,7 @@
     
     {% if page.permalink == 'home' or page.permalink == 'products' %}
       <div class="full-screen-overlay category-nav-overlay">
-        <div class="overlay-header">
+        <div class="header overlay-header">
           <div class="header-left">
             <button class="hamburger close-category-nav-overlay" type="button">
               <div>
