@@ -90,6 +90,7 @@ input, textarea
   border-bottom: 1px solid $text-color
   border-radius: 0
   color: $text-color
+  font-family: $primary-font
   font-size: 15px
   padding: 12px 0
   width: 100%
@@ -162,9 +163,14 @@ ol, ul
     display: block
     height: 40px
     font-size: 12px
-    padding: 14px 9px
+    line-height: 40px
     text-align: center
     width: 40px
+    
+    @media screen and (max-width: $break-small)
+      height: 32px
+      line-height: 32px
+      width: 32px
     
     &.expanded
       +animation(growUp 1.5s .1s)
@@ -232,6 +238,11 @@ ol, ul
     top: 12px
     width: 32px
     
+    @media screen and (max-width: $break-small)
+      height: 24px
+      top: 8px
+      width: 24px
+    
   span
     +transform(rotate(0deg))
     +transition(.3s all)
@@ -262,6 +273,10 @@ ol, ul
   fill: $product-page-text-color
   height: 30px
   width: 30px
+  
+  @media screen and (max-width: $break-small)
+    height: 24px
+    width: 24px
   
 #home, #products
   .open-page-nav
