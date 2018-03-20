@@ -528,6 +528,10 @@ $('.main').on( 'click','.infinite-scroll-last', function(e) {
 var processCartUpdate = function(input, item_id, new_val, cart) {
   var item_count = cart.item_count;
   var sub_total = Format.money(cart.total, true, true);
+  var singular = $('.cart-page-title').data('singular'); 
+  var plural = $('.cart-page-title').data('plural');
+  var cart_title = Format.pluralize(item_count, singular, plural);
+  $('.cart-items-title').html(cart_title);
   if (item_count == 0) {
     if ($('body').attr('id') == "cart") {
       $('.cart-form').slideUp('fast', function() { 

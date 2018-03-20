@@ -8,7 +8,7 @@
         </div>
       </button>
     </div>
-    <div class="overlay-title cart-page-title">Cart — {{ cart.item_count | pluralize: 'item', 'items' }}</div>
+    <div class="overlay-title cart-page-title" data-singular="item" data-plural="items">Cart — <span class="cart-items-title">{{ cart.item_count | pluralize: 'item', 'items' }}</span></div>
     
     <div class="header-placeholder">&nbsp;</div>
   </div>
