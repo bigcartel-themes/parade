@@ -1,18 +1,23 @@
 var inPreview = (/\/admin\/design/.test(top.location.pathname));
 
-$(window).bind('pageshow', function(event) {
-	if ($('.intro-overlay').length) {
-		var $this = $('.intro-overlay');
-		$('.intro-overlay').delay(500).removeClass('preload').delay(500).queue(function(next) {
-			$('.intro-overlay .intro-text').fadeIn(300, function() {
-				$(this).stop();
-				$this.stop().delay(500).fadeOut(600, function() { 
-  				$('.product-card').fadeIn(300);
-				});
-			});																	  
-		});
-	}
-});
+//if (document.referrer.indexOf(location.protocol + "//" + location.host) === 0) { 
+//  $('.intro-overlay').css('display','none');  
+//}
+//else { 
+  $(window).bind('pageshow', function(event) {
+  	if ($('.intro-overlay').length) {
+  		var $this = $('.intro-overlay');
+  		$('.intro-overlay').delay(500).removeClass('preload').delay(500).queue(function(next) {
+  			$('.intro-overlay .intro-text').fadeIn(300, function() {
+  				$(this).stop();
+  				$this.stop().delay(500).fadeOut(600, function() { 
+    				$('.product-card').fadeIn(300);
+  				});
+  			});																	  
+  		});
+  	}
+  });
+//}
 String.prototype.hashCode = function() {
   var hash = 0, i, chr;
   if (this.length === 0) return hash;
@@ -24,20 +29,19 @@ String.prototype.hashCode = function() {
   return hash;
 };
 
-if (typeof announcementMessage !== "undefined") {
-  if (announcementMessage) { 
-    var hashedMessage = announcementMessage.hashCode();
-    var cookieValue = getCookie('hide-announcement-message');
-    if (cookieValue) {
-      if (cookieValue != hashedMessage) {
-        $('body').addClass('has-flash-message');
-      }
-    }
-    else { 
+if ($('.flash-message-text').length) {
+  var announcementMessage = $('.flash-message-text').html();
+  var hashedMessage = announcementMessage.hashCode();
+  var cookieValue = getCookie('hide-announcement-message');
+  if (cookieValue) {
+    if (cookieValue != hashedMessage) {
       $('body').addClass('has-flash-message');
     }
-  } 
-}
+  }
+  else { 
+    $('body').addClass('has-flash-message');
+  }
+} 
         
 function setCookie(name,value,days) {
   var expires = "";
@@ -138,16 +142,22 @@ $('.product-list').on( 'append.infiniteScroll', function( event, response, path,
 var openOverlay = function(overlay_name) { 
   var scrollDiv = $('<div class="scrollbar-measure"></div>').appendTo(document.body)[0];
   var scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  var hamburger = $(overlay_name).find('.hamburger');
   $(overlay_name).addClass('show');
-  $(overlay_name).find('.hamburger').addClass('is-active');
+  if (!hamburger.hasClass('close-product-option-overlay')) { 
+    hamburger.addClass('is-active'); 
+  }
   if ($(window).height() < $(document).height()) {
     $(document.body).css('margin-right', scrollBarWidth + 'px');
   }
   $('body').addClass('overlay-open');
 }
 
-var closeOverlay = function(overlay_name) { 
-  $(overlay_name).find('.hamburger').removeClass('is-active');
+var closeOverlay = function(overlay_name) {
+  var hamburger = $(overlay_name).find('.hamburger');
+  if (!hamburger.hasClass('close-product-option-overlay')) { 
+    hamburger.removeClass('is-active'); 
+  }
   $(overlay_name).removeClass('show');
   $(document.body).css('margin-right', '');
   $('.scrollbar-measure').remove();
@@ -394,7 +404,6 @@ $('.product-form').submit(function(e) {
   , addingText = addButton.data('adding-text')
   , cartLink = $(".cart-link");
   if (quantity > 0 && itemID > 0) {
-    // Adding...
     addText.html(addingText);
     cursorText.html(addingText);
     Cart.addItem(itemID, quantity, function(cart) { 
@@ -404,10 +413,8 @@ $('.product-form').submit(function(e) {
       cartLink.addClass('expanded');
       addText.html(addedText);
       cursorText.html(addedText);
-      // Added!
       setTimeout(function(){
         cartLink.removeClass('expanded');
-        // Reset
         addText.html(addTextValue);
         cursorText.html(cursorTextValue);
       },1500);
@@ -523,7 +530,10 @@ var processCartUpdate = function(input, item_id, new_val, cart) {
   var sub_total = Format.money(cart.total, true, true);
   if (item_count == 0) {
     if ($('body').attr('id') == "cart") {
-      document.location.href = '/';
+      $('.cart-form').slideUp('fast', function() { 
+        $('.cart-empty-message').slideDown('fast');
+      })
+      
     }
     else { 
       hideCart();
@@ -538,9 +548,9 @@ var processCartUpdate = function(input, item_id, new_val, cart) {
     $('.checkout-btn-total').html(sub_total);
     $('.cart-link').html(item_count);
     $('.checkout-btn').attr("name","checkout");
-  }
-  if (new_val == 0) { 
-    $('.cart-item[data-cart-id="'+item_id+'"]').slideUp('fast');
+    if (new_val == 0) { 
+      $('.cart-item[data-cart-id="'+item_id+'"]').slideUp('fast');
+    }
   }
   return false;
 }

@@ -252,11 +252,17 @@ ol, ul
   &.is-active
     span:nth-child(1)
       +transform(rotate(-45deg))
-      top: 8px
+      top: 4px
 		
     span:nth-child(2)
       +transform(rotate(45deg))
+      top: 4px
 
+.return-icon
+  fill: $product-page-text-color
+  height: 30px
+  width: 30px
+  
 #home, #products
   .open-page-nav
     display: block
@@ -266,17 +272,11 @@ ol, ul
     
 #contact, .custom
   .open-page-nav
-    display: none
-    
-    @media screen and (max-width: $break-medium)
-      display: block
-  
-  .return-home-link
     display: block
-    
-    @media screen and (max-width: $break-medium)
-      display: none
-    
+
+  .return-home-link
+    display: none
+
 .main
   margin: 0 auto
   margin-top: 200px
@@ -307,24 +307,21 @@ ol, ul
     padding-top: 0
 
 .custom-page-title
-  display: none
   font-size: 32px
   line-height: 1.2em
+  margin-bottom: 40px
   text-align: center
-  
-  @media screen and (max-width: $break-medium)
-    display: block
-    margin-bottom: 40px
   
   @media screen and (max-width: $break-small)
     font-size: 24px
     
 .custom-page-content
-  +flex(0 1 960px)
+  margin: 0 auto
+  max-width: 960px
   padding: 0 60px
+  width: 100%
   
   @media screen and (max-width: $break-medium)
-    +flex(100%)
     max-width: 100%
     padding: 0
     
@@ -483,48 +480,42 @@ ol, ul
   .hamburger
     margin-right: auto
     
-  .overlay-header
-    +flexbox
-    +justify-content(space-between)
-    +align-items(center)
-    left: 0
-    position: absolute
-    top: 0
-    width: 100%
-  
-  .header-placeholder
-    height: 40px
-    width: 40px
-    
   .overlay-title
     font-size: 16px
     text-align: center
     
   .overlay-content
     +flexbox
-    margin: 200px auto 0
+    margin: 0 auto
     padding: 50px
     width: 100%
-    
-    
-    
-    @media screen and (max-width: $break-medium)
-      margin-top: 100px
-      
+
     @media screen and (max-width: $break-small)
       padding: 20px
     
     &.centered-content 
       +justify-content(center)
-      margin-top: 100px
       max-width: 800px
+    
+.overlay-header
+  +flexbox
+  +justify-content(space-between)
+  +align-items(center)
+  left: 0
+  position: absolute
+  top: 0
+  width: 100%
 
-.categories-list
+.header-placeholder
+  height: 40px
+  width: 40px
+  
+.categories-list, .link-list
   font-size: 32px
   line-height: 48px
   text-align: center
   
-  .category-link
+  > li
     margin-bottom: 16px
   
   @media screen and (max-width: $break-small)
@@ -533,72 +524,15 @@ ol, ul
     
     .category-link
       margin-bottom: 12px
-  
-.pages .page-nav-menu
-  display: block
-  font-size: 16px
-  
-.link-list
-  font-size: 16px
-  line-height: 16px
-  margin-bottom: 30px
-  
-  &.pages-links
-    @media screen and (max-width: $break-medium)
-      font-size: 32px
-      line-height: 36px
-  
-  @media screen and (max-width: $break-medium)
-    text-align: center
-  
-  li
-    +transition(all .5s)
-    display: block
-    margin: 6px 0
-    padding-left: 0
-    position: relative
-    
-    a
-      display: block
-      padding: 5px 0
-    
-  &.pages-links li
-  
-    &.mobile-products-link
-      display: none
-      
-      @media screen and (max-width: $break-medium)
-        display: block
-    
-    @media screen and (min-width: $break-medium)
-      &:before
-        +transform(translateY(-50%))
-        +transition(all .5s)
-        border: 1px solid transparent
-        content: " "
-        left: 0
-        position: absolute
-        top: 50%
-        width: 0px
-    
-      &.selected, &:hover
-        padding-left: 30px
-        
-        &:before
-          border: 1px solid $text-color
-          width: 20px
-      
+
 .social-links
   font-size: 14px
   
 .credit
   font-size: 10px
   line-height: 14px
+  text-align: center
   
-  @media screen and (max-width: $break-medium)
-    margin-top: 100px
-    text-align: center
-
 .scrollbar-measure
   height: 100px
   overflow: scroll
