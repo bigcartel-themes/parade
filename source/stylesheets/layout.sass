@@ -604,8 +604,10 @@ ol, ul
       width: calc(100% - 50px)
   
   .flash-message-close
+    +transform(translateY(-50%))
     position: absolute
     right: 50px
+    top: 50%
     
     @media screen and (max-width: $break-small)
       right: 20px
