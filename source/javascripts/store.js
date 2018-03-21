@@ -359,6 +359,23 @@ var showCart = function() {
   });
 }
 
+function tkObjectFit() {
+  var productImagesElement = $('.product-images')[0];
+  var objectFit = getComputedStyle( productImagesElement, ':before' ).content;
+  if (objectFit == 'none') { 
+    $('.product-image.fill img').each(function(){
+      var imgSrc = $(this).attr('src');
+      var fitType = 'cover';
+      if ($(this).data('fit-type')) {
+        fitType = $(this).data('fit-type');
+      }
+      $(this).parent().css({ 'background' : 'transparent url("'+imgSrc+'") no-repeat center center/'+fitType, });
+      $(this).remove(); 
+    });
+  }
+}
+tkObjectFit();
+
 productImages = $('.multiple-product-images');
 desktopProductImagesOptions = {
   accessibility: false,
