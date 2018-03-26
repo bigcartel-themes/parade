@@ -1,14 +1,14 @@
 <div class="cart-holder">
   <div class="header overlay-header">
     <div class="header-left">
-      <button class="hamburger is-active close-cart-overlay grow-cursor" type="button">
+      <a href="/" class="hamburger is-active close-cart-overlay grow-cursor">
         <div>
         	<span></span>
         	<span></span>
         </div>
-      </button>
+      </a>
     </div>
-    <div class="overlay-title cart-page-title" data-singular="item" data-plural="items">Cart — <span class="cart-items-title">{{ cart.item_count | pluralize: 'item', 'items' }}</span></div>
+    <div class="overlay-title cart-page-title" data-singular="Item" data-plural="Items">Cart — <span class="cart-items-title">{{ cart.item_count | pluralize: 'Item', 'Items' }}</span></div>
     
     <div class="header-placeholder">&nbsp;</div>
   </div>

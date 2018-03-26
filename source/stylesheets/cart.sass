@@ -9,6 +9,7 @@
     padding-top: 0
 
 .cart-page-title
+  font-family: $primary-font
   font-size: 32px
   
   @media screen and (max-width: $break-small)
@@ -80,11 +81,14 @@
   +align-items(center)
   
   @media screen and (max-width: $break-small)
-    +flex-basis(80%)
+    +flex-basis(90%)
   
 .item-details
   line-height: 1.5em
   padding: 0 24px
+  
+  @media screen and (max-width: $break-small)
+    line-height: 1.1em
   
 .item-details-name
   font-family: $primary-font
@@ -122,7 +126,7 @@
     text-align: right
     
     @media screen and (max-width: $break-small)
-      +flex-basis(20%)
+      +flex-basis(10%)
       margin-left: auto
       order: 2
   
@@ -137,13 +141,18 @@
   padding: 0
   text-align: center
   width: 64px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+    width: 54px
 
 .item-image
   background-position: 50% 50%
   background-size: cover
   display: block
-  height: 120px
-  width: 120px
+  height: 100px
+  min-width: 100px
+  width: 100px
   
 .checkout-btn
   margin-top: 32px
