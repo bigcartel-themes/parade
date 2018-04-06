@@ -9,6 +9,7 @@
     padding-top: 0
 
 .cart-page-title
+  color: $text-color
   font-family: $primary-font
   font-size: 32px
   
@@ -62,13 +63,14 @@
     text-decoration: underline
 
 .cart-items
-  border-bottom: 1px solid $button-background-color
+  border-bottom: 1px solid $text-color
 
 .cart-item
   +flexbox
   +flex-direction(row)
   +align-items(center)
-  border-top: 1px solid $button-background-color
+  border-top: 1px solid $text-color
+  color: $text-color
   font-family: $secondary-font
   font-size: 16px
   padding: 24px 0
@@ -79,13 +81,14 @@
 .item-image-details
   +flexbox
   +align-items(center)
+  width: 60%
   
   @media screen and (max-width: $break-small)
     +flex-basis(90%)
   
 .item-details
   line-height: 1.5em
-  padding: 0 24px
+  padding: 0 32px 0 24px
   
   @media screen and (max-width: $break-small)
     line-height: 1.1em
@@ -95,8 +98,7 @@
   
 .item-quantity-holder
   +flexbox
-  margin-left: auto
-  padding-right: 60px
+  padding-right: 30px
   
   @media screen and (max-width: $break-small)
     order: 3
@@ -105,10 +107,11 @@
     max-width: 50%
     
 .item-details-price
+  margin-left: auto
+  
   @media screen and (max-width: $break-small)
     order: 4
     margin-top: 20px
-    margin-left: auto
   
 .item-details-option
   font-size: 10px
@@ -122,15 +125,15 @@
   width: 24px
   
   &.remove-qty
-    margin-left: 30px
+    margin-left: auto
     text-align: right
     
     @media screen and (max-width: $break-small)
       +flex-basis(10%)
-      margin-left: auto
       order: 2
   
   svg
+    fill: $text-color
     height: 24px
     width: 24px
   
