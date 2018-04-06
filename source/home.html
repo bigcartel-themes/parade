@@ -6,7 +6,7 @@
   </ul>
 {% endif %}
 
-{% paginate products from products.current by 20 %}
+{% paginate products from products.current by 30 %}
   {% if products != blank %}
     <ul class="product-list">
       {% for product in products %}
