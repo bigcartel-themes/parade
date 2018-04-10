@@ -272,10 +272,18 @@ var updateCursor = function() {
       var $arrow = $('.arrow');
       var cursorWidth = $('.arrow').outerWidth() / 2;
       var cursorHeight = $('.arrow').outerHeight() / 2;
-      $('.arrow').offset({
-        'left': getMouseX(),
-        'top': getMouseY() - cursorHeight
-      });
+      if ($('.arrow-next').css('display') == 'block') { 
+		    $('.arrow').offset({
+		      'left': getMouseX() - 60,
+		      'top': getMouseY() - cursorHeight
+		    });
+		  }
+		  else { 
+		  	$('.arrow').offset({
+		  		'left': getMouseX(),
+		  		'top': getMouseY() - cursorHeight
+	  		});
+		  }
     }
     var $cursor = $('.cursor');
     $('.cursor').css({
