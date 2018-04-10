@@ -105,21 +105,6 @@ ol, ul
   list-style: none
   margin: 0
   padding: 0
-
-.errors
-  color: $error-text
-  font-family: $secondary-font
-  font-size: 16px
-  line-height: 24px
-  list-style: none
-  margin-bottom: 40px
-  text-align: center
-  
-  li
-    margin-bottom: 10px
-  
-  &.home-errors
-    margin-bottom: 100px
     
 .header
   background-color: transparent
@@ -554,12 +539,13 @@ ol, ul
   font-family: $secondary-font
   font-size: 14px
   line-height: 24px
-  margin: 32px 0
+  margin: 32px 0 0
   
 .credit
   font-family: $secondary-font
   font-size: 10px
   line-height: 14px
+  margin-top: 32px
   text-align: center
   
 .scrollbar-measure
@@ -630,3 +616,19 @@ ol, ul
       fill: $announcement-text-color
       height: 14px
       width: 14px
+      
+
+ul.errors
+  color: $error-text
+  font-family: $secondary-font
+  font-size: 16px
+  line-height: 24px
+  list-style: none
+  margin-bottom: 40px
+  text-align: center
+  
+  li
+    margin-bottom: 10px
+  
+  &.home-errors
+    margin-bottom: 100px
