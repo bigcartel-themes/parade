@@ -54,11 +54,12 @@
 <div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
 <div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
 
-<div class="product-description">
-  {% if product.description != blank %}
+
+{% if product.description != blank %}
+  <div class="product-description">
     {{ product.description | paragraphs }}
-  {% endif %}
-</div>
+  </div>
+{% endif %}
 
 {% if product.status == 'active' %}
   {% if product.has_default_option %}
