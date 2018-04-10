@@ -1,0 +1,171 @@
+@import 'variables'
+
+#cart
+  > header
+    .secondary-header, .primary-header
+      display: none
+      
+  > .main
+    padding-top: 0
+
+.cart-page-title
+  color: $text-color
+  font-family: $primary-font
+  font-size: 32px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 24px
+    
+.cart-holder
+  -webkit-overflow-scrolling: touch
+  background-color: $background-color
+  height: auto
+  left: 0
+  max-height: 100vh
+  overflow-y: auto
+  padding-bottom: 64px
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 200
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    height: 100vh
+
+  header
+    padding: 0
+    position: relative
+    top: 0
+    left: 0
+    width: 100%
+    
+  .store-link
+    font-size: 40px
+    
+.cart-content
+  margin: 0 auto 32px
+  max-width: 800px
+  width: 100%
+  
+  @media screen and (max-width: $break-small)
+    padding: 0 20px 32px
+  
+.cart-empty-message
+  font-size: 20px
+  line-height: 30px
+  text-align: center
+  
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+    line-height: 24px
+    
+  a
+    text-decoration: underline
+
+.cart-items
+  border-bottom: 1px solid $text-color
+
+.cart-item
+  +flexbox
+  +flex-direction(row)
+  +align-items(center)
+  border-top: 1px solid $text-color
+  color: $text-color
+  font-family: $secondary-font
+  font-size: 16px
+  padding: 24px 0
+  
+  @media screen and (max-width: $break-small)
+    +flex-wrap(wrap)
+
+.item-image-details
+  +flexbox
+  +align-items(center)
+  width: 60%
+  
+  @media screen and (max-width: $break-small)
+    +flex-basis(90%)
+  
+.item-details
+  line-height: 1.5em
+  padding: 0 32px 0 24px
+  
+  @media screen and (max-width: $break-small)
+    line-height: 1.1em
+  
+.item-details-name
+  font-family: $primary-font
+  
+.item-quantity-holder
+  +flexbox
+  padding-right: 30px
+  
+  @media screen and (max-width: $break-small)
+    order: 3
+    margin-left: 0
+    margin-top: 20px
+    max-width: 50%
+    
+.item-details-price
+  margin-left: auto
+  
+  @media screen and (max-width: $break-small)
+    order: 4
+    margin-top: 20px
+  
+.item-details-option
+  font-size: 10px
+  margin-top: 6px
+  
+.qty-button
+  background: none
+  border: none
+  height: 24px
+  outline: none
+  padding: 0
+  width: 24px
+  
+  &.remove-qty
+    margin-left: auto
+    text-align: right
+    
+    @media screen and (max-width: $break-small)
+      +flex-basis(10%)
+      order: 2
+  
+  svg
+    fill: $text-color
+    height: 24px
+    width: 24px
+  
+.qty-input
+  border: none
+  height: 24px
+  line-height: 24px
+  padding: 0
+  text-align: center
+  width: 64px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 16px
+    width: 54px
+
+.item-image
+  background-position: 50% 50%
+  background-size: cover
+  display: block
+  height: 100px
+  min-width: 100px
+  width: 100px
+  
+.checkout-btn
+  margin-top: 32px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    bottom: 0
+    left: 0
+    position: fixed
+    width: 100%

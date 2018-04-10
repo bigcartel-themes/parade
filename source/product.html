@@ -1,0 +1,79 @@
+<div class="product-images {% if product.images.size > 1 %}multiple-product-images{% else %}single-product-image{% endif %}">
+  {% for image in product.images %}
+    <div class="product-image {{ theme.product_image_display }}">
+      <img alt="Image of {{ product.name | escape }}" src="{{ image | product_image_url | constrain: 2000 }}">
+    </div>
+  {% endfor %}
+</div>
+
+{% if product.status == 'active' %}
+  <div class="full-screen-overlay product-option-overlay">
+    <div class="header overlay-header">
+      <div class="header-left">
+        <button class="hamburger grow-cursor is-active close-product-option-overlay" type="button">
+          <div>
+          	<span></span>
+          	<span></span>
+          </div>
+        </button>
+      </div>
+      <div class="overlay-title">Select Option — {{ product.default_price | money: theme.money_format }}</div>
+      <div class="header-placeholder">&nbsp;</div>
+    </div>
+    
+    <div class="overlay-content centered-content">
+      <form action="/cart" class="product-form" method="post">
+        {% if product.has_default_option %}
+          {{ product.option | hidden_option_input }}
+        {% else %}
+          <input type="hidden" name="[cart][add][id]" id="option" class="hidden-product-option">
+          <ul class="options-list">
+            {% for option in product.options_in_stock %}
+              <li class="options-link option-item grow-cursor" data-option-id="{{ option.id }}" data-option-price="{{ option.price | money: theme.money_format | strip_html }}">
+                {{ option.name }} {% if option.price != product.default_price %}— {{ option.price | money: theme.money_format }}{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {{ product | product_quantity_input, 1, 'product-quantity', 'product-quantity' }}
+      </form>
+    </div>
+  </div>
+{% endif %}
+
+{% assign product_status = '' %}
+{% case product.status %}
+  {% when 'active' %}
+    {% if product.on_sale %}{% assign product_status = 'On Sale' %}{% endif %}
+  {% when 'sold-out' %}
+    {% assign product_status = 'Sold Out' %}
+  {% when 'coming-soon' %}
+    {% assign product_status = 'Coming Soon' %}
+{% endcase %}
+
+<div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
+<div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
+
+
+{% if product.description != blank %}
+  <div class="product-description">
+    {{ product.description | paragraphs }}
+  </div>
+{% endif %}
+
+{% if product.status == 'active' %}
+  {% if product.has_default_option %}
+    <button class="button add-to-cart-button product-page-button" type="submit" data-adding-text="Adding..." data-added-text="Added!">
+      <span class="status-text">Add to Cart</span>
+    </button>
+  {% else %}
+    <button class="button select-option-button product-page-button" type="submit">
+      <span class="status-text">Select Option</span>
+    </button>
+  {% endif %}
+{% endif %}
+
+{% if product.images.size > 1 %}
+  <div class="arrow arrow-previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 33.9"><path d="M46 16.2H2.9L18 1.1 17 0 1.1 15.9 0 17l1.1 1L17 33.9l1-1L2.9 17.7H46z"/></svg></div>
+  <div class="arrow arrow-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 33.9"><path d="M0 17.7h43.1L28 32.9l1 1L44.9 18l1.1-1-1.1-1.1L29 0l-1 1.1 15.1 15.1H0z"/></svg></div>
+{% endif %}

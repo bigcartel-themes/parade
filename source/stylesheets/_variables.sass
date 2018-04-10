@@ -1,0 +1,46 @@
+@import 'flexbox'
+
+$background-color: #{"{{ theme.background_color }}"}
+$text-color: #{"{{ theme.text_color }}"}
+
+$product-page-background-color: #{"{{ theme.product_page_background_color }}"}
+$product-page-text-color: #{"{{ theme.product_page_text_color }}"}
+
+$button-background-color: #{"{{ theme.button_background_color }}"}
+$button-text-color: #{"{{ theme.button_text_color }}"}
+
+$announcement-background-color: #{"{{ theme.announcement_background_color }}"}
+$announcement-text-color: #{"{{ theme.announcement_text_color }}"}
+
+$error-text: #{"{{ theme.error_text_color }}"}
+
+$primary-font: #{"{{ theme.primary_font | font_family }}"}
+$secondary-font: #{"{{ theme.secondary_font | font_family }}"}
+
+$break-extra-large: 1500px
+$break-large: 1200px
+$break-medium: 1023px
+$break-small: 767px
+$break-extra-small: 640px
+
+@mixin transition($transition...)
+  -webkit-transition: $transition
+  transition: $transition
+  
+@mixin transform($str...)
+  -webkit-transform: $str
+  transform: $str
+  
+@mixin keyframes($animation)
+  @-webkit-keyframes #{$animation}
+    @content
+
+  @keyframes #{$animation}
+    @content
+    
+@mixin animation($str...)
+  -webkit-animation: $str
+  animation: $str
+
+@mixin all-transitions
+  +transition(.2s linear)

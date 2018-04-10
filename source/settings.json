@@ -1,0 +1,194 @@
+{
+  "name": "Parade",
+  "version": "1.0.0",
+  "images": [
+    {
+      "variable": "logo",
+      "label": "Logo",
+      "description": "Good for an image up to 120 pixels high"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "primary_font",
+      "label": "Primary Font",
+      "default": "Libre Baskerville"
+    },
+    {
+      "variable": "secondary_font",
+      "label": "Secondary Font",
+      "default": "Libre Baskerville"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background_color",
+      "label": "Background",
+      "default": "#EDDDD0"
+    },
+    {
+      "variable": "text_color",
+      "label": "Text",
+      "default": "#111111"
+    },
+    {
+      "variable": "product_page_text_color",
+      "label": "Product Page Text",
+      "default": "#111111"
+    },
+    {
+      "variable": "product_page_background_color",
+      "label": "Product Page Background",
+      "default": "#C6D0B3"
+    },
+    {
+      "variable": "button_text_color",
+      "label": "Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button Background",
+      "default": "#111111"
+    },
+    {
+      "variable": "announcement_text_color",
+      "label": "Announcement Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "announcement_background_color",
+      "label": "Announcement Background",
+      "default": "#000000"
+    },
+    {
+      "variable": "error_text_color",
+      "label": "Error Text",
+      "default": "#AF5F55"
+    }
+  ],
+  "options": [
+    {
+      "variable": "product_image_display",
+      "label": "Product image display",
+      "type": "select",
+      "options": [
+        ["Fit", "fit"],
+        ["Fill", "fill"]
+      ],
+      "default": "fill",
+      "description": "Sets the display of your images on the Product page"
+    },
+    {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
+    {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign_and_code",
+      "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "Twitter URL",
+      "type": "text",
+      "description": "Ex: http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "facebook_url",
+      "label": "Facebook URL",
+      "type": "text",
+      "description": "Ex: http://facebook.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
+    }
+  ],
+  "checkout": {
+    "header_image": "{{ logo }}",
+    "header_image_max_width": "600px",
+    "header_image_max_height": "120px",
+    "title_font": "{{ primary_font }}",
+    "title_font_weight": "normal",
+    "title_font_size": "22px",
+    "title_color": "{{ text_color }}",
+    "title_background_color": "{{ background_color }}",
+    "title_vertical_padding": "27px",
+    "accent_background_color": "{{ background_color }}",
+    "background_color": "{{ background_color }}",
+    "body_font": "{{ primary_font }}",
+    "body_font_size": "14px",
+    "step_border_color": "{{ background_color }}",
+    "step_header_color": "{{ text_color }}",
+    "step_border_width": "4px",
+    "step_border_style": "solid",
+    "step_border_radius": "0px",
+    "step_inactive_header_color": " {{ text_color }}",
+    "step_header_font": "{{ primary_font }}",
+    "step_background_color": "{{ background_color }}",
+    "content_header_background_color": "{{ background_color }}",
+    "content_header_color": "{{ text_color }}",
+    "content_color": "{{ text_color }}",
+    "content_header_font_size": "18px",
+    "content_border_color": "transparent", 
+    "content_border_radius": "0px",
+    "error_background_color": "#ea4859",
+    "error_color": "#ffffff",
+    "error_border_radius": "0px",
+    "error_border_color": "#ea4859",
+    "input_focus_color": "#000000",
+    "input_focus_background_color": "#ffffff",
+    "input_focus_border_color": "#777777",
+    "input_error_border_color": "#ea4859",
+    "input_color": "#000000",
+    "input_error_color": "#000000",
+    "input_border_color": "#bfbfbf",
+    "input_background_color": "#ffffff",
+    "input_error_background_color": "#ffffff",
+    "input_border_radius": "0px",
+    "input_border_width": "2px",
+    "input_font": "{{ primary_font }}",
+    "button_color": "{{ button_text_color }}",
+    "button_border_width": "0px",
+    "button_border_radius": "0px",
+    "button_font": "{{ secondary_font }}",
+    "button_hover_color": "{{ button_text_color }}",
+    "button_background_color": "{{ button_background_color }}",
+    "button_hover_background_color": "{{ button_background_color }}",
+    "button_text_transform": "none",
+    "link_color": "{{ text_color }}",
+    "link_hover_color": "{{ text_color }}",
+    "step_header_color": "{{ text_color }}",
+    "step_header_font_size": "18px",
+    "summary_color": "{{ text_color }}",
+    "summary_secondary_color": "{{ text_color }}",
+    "summary_item_border_color": "{{ background_color }}",
+    "summary_item_list_border_color": "{{ background_color }}",
+    "summary_submit_background_color": "{{ background_color }}",
+    "summary_submit_border_color": "{{ background_color }}",
+    "summary_submit_border_width": "4px"
+  }
+}

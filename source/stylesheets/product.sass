@@ -1,0 +1,223 @@
+@import 'variables'
+
+.product-page-title
+  font-size: 32px
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    display: none
+  
+.product-page-subtitle
+  font-family: $secondary-font
+  font-size: 16px
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    display: none
+    
+.product-images
+  height: 100vh
+  left: 0
+  margin: 0 auto
+  position: absolute
+  top: 0
+  width: 100%
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    height: auto
+    margin-bottom: 50px
+    position: relative
+    
+    &.multiple-product-images
+      margin-bottom: 70px
+     
+@supports (object-fit: cover)
+  .product-images:before
+    content: "objectfit"
+    display: none
+      
+.product-image
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  position: absolute
+  height: 100vh
+  width: 100%
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    position: relative
+    left: auto
+    top: auto
+    bottom: auto
+    height: auto
+  
+  &.fit
+    height: calc(100vh - 400px)
+    margin: 200px
+    width: calc(100% - 400px)
+    
+    @media screen and (max-width: $break-medium)
+      height: auto
+      margin: 0
+      width: 100%
+    
+    img
+      height: 100%
+      margin: 0 auto
+      max-height: 100%
+      max-width: 100%
+      width: auto
+      
+      @media screen and (max-width: $break-medium)
+        height: auto
+        width: 100%
+  
+  img
+    display: block
+    object-fit: cover
+    object-position: 50% 50%
+    width: 100%
+    height: 100vh
+    
+    @media screen and (max-width: $break-medium) and (orientation: portrait)
+      height: 100%
+
+.flickity-viewport
+  +transition(height .2s)
+  z-index: 94
+    
+.flickity-page-dots
+  bottom: 50px
+  z-index: 94
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    bottom: -40px
+  
+  .dot
+    background: $product-page-text-color
+    border-radius: 0
+    height: 2px
+    width: 24px
+    
+.multiple-product-images .flickity-prev-next-button
+  border-radius: 0
+  background: transparent
+  bottom: 0
+  height: 100%
+  top: 0
+  transform: none
+  width: 33%
+  z-index: 95
+
+  svg
+    display: none
+    
+  &:hover
+    background: transparent
+    
+.touch-device .multiple-product-images .flickity-prev-next-button
+  opacity: 0
+  visibility: hidden
+    
+.product-description
+  +transform(translateX(-50%))
+  font-family: $secondary-font
+  font-size: 24px
+  left: 50%
+  line-height: 40px
+  max-width: 900px
+  min-height: calc(100vh - 200px)
+  padding: 0 50px 200px
+  position: absolute
+  top: calc(100vh + 200px)
+  width: 100%
+  
+  @media screen and (max-width: $break-medium)
+    margin-top: 60px
+  
+  @media screen and (max-width: $break-small)
+    font-size: 18px
+    line-height: 32px
+    padding-bottom: 64px
+    position: relative
+    top: auto
+  
+  a
+    color: $product-page-text-color
+    text-decoration: underline
+  
+  img, iframe
+    display: block
+    max-width: 100%
+    
+  ol, ul
+    list-style: inherit
+    margin: 1em 0
+    padding: 0 0 0 25px
+
+.product-form
+  .options-list
+    font-size: 32px
+    line-height: 48px
+    text-align: center
+    
+    .options-link
+      margin-bottom: 16px
+    
+    @media screen and (max-width: $break-small)
+      font-size: 24px
+      line-height: 40px
+      
+      .options-link
+        margin-bottom: 12px
+  
+.product-quantity
+  display: none
+
+.product-page-button
+  display: none
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    display: block
+    z-index: 97
+    position: fixed
+    top: auto
+    left: 0
+    bottom: 0
+    border: 0
+    font-size: 14px
+    width: 100%
+    border-radius: 0
+    
+.touch-device .product-page-button
+  bottom: 0
+  display: block
+  font-size: 14px
+  left: 0
+  position: fixed
+  z-index: 97
+  width: 100%
+
+.show-mobile-portrait
+  display: none
+  padding: 0 50px
+  text-align: center
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    display: block
+  
+.mobile-product-title
+  font-size: 24px
+  line-height: 32px
+  text-align: center
+  
+.mobile-product-subtitle
+  font-family: $secondary-font
+  font-size: 16px
+  margin-top: 20px
+
+#product .main
+  margin-top: 0
+  
+  @media screen and (max-width: $break-medium) and (orientation: portrait)
+    padding: 0
+    
