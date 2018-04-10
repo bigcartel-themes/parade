@@ -1,6 +1,6 @@
 {
   "name": "Parade",
-  "version": "0.0.123",
+  "version": "1.0.0",
   "images": [
     {
       "variable": "logo",
@@ -77,13 +77,13 @@
         ["Fill", "fill"]
       ],
       "default": "fill",
-      "description": "Sets the display of your product images"
+      "description": "Sets the display of your images on the Product page"
     },
     {
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
-      "description": "Displays an announcement message"
+      "description": "Displays an announcement message on the top of every page"
     },
     {
       "variable": "money_format",

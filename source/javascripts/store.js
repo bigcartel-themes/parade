@@ -108,15 +108,17 @@ $(".product-card-spacer").each(function(index, element) {
   addProductCardSpacer(element);
 });
 
-$('.product-list').infiniteScroll({
-  path: '.next-button',
-  append: '.product-list li',
-  hideNav: '.pagination',
-  status: '.page-load-status',
-  history: false,
-  debug: false,
-  scrollThreshold: 1600
-});
+if ($('.next-button').length) { 
+    $('.product-list').infiniteScroll({
+    path: '.next-button',
+    append: '.product-list li',
+    hideNav: '.pagination',
+    status: '.page-load-status',
+    history: false,
+    debug: false,
+    scrollThreshold: 1600
+  });
+}
 
 $('.product-list').on( 'append.infiniteScroll', function( event, response, path, items ) {
   $.each(items, function( index, value ) {
