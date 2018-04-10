@@ -300,6 +300,8 @@ $('html').mouseleave(function(){
   $('body').removeClass('show-cursor');
 });
 
+cartShowing = false;
+
 $(document).on('keyup',function(e) {
   if (e.keyCode == 27) {
     if (cartShowing) { 
