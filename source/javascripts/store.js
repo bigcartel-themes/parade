@@ -1,23 +1,19 @@
 var inPreview = (/\/admin\/design/.test(top.location.pathname));
 
-//if (document.referrer.indexOf(location.protocol + "//" + location.host) === 0) { 
-//  $('.intro-overlay').css('display','none');  
-//}
-//else { 
-  $(window).bind('pageshow', function(event) {
-  	if ($('.intro-overlay').length) {
-  		var $this = $('.intro-overlay');
-  		$('.intro-overlay').delay(500).removeClass('preload').delay(500).queue(function(next) {
-  			$('.intro-overlay .intro-text').fadeIn(300, function() {
-  				$(this).stop();
-  				$this.stop().delay(500).fadeOut(600, function() { 
-    				$('.product-card').fadeIn(300);
-  				});
-  			});																	  
-  		});
-  	}
-  });
-//}
+$(document).ready(function(event) {
+	if ($('.intro-overlay').length) {
+		var $this = $('.intro-overlay');
+		$('.intro-overlay').delay(600).removeClass('preload').delay(500).queue(function(next) {
+			$('.intro-overlay .intro-text').fadeIn(300, function() {
+				$(this).stop();
+				$this.stop().delay(500).fadeOut(600, function() { 
+  				$('.product-card').fadeIn(300);
+				});
+			});																	  
+		});
+	}
+});
+
 String.prototype.hashCode = function() {
   var hash = 0, i, chr;
   if (this.length === 0) return hash;
@@ -52,6 +48,7 @@ function setCookie(name,value,days) {
   }
   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
+
 function getCookie(name) {
   var nameEQ = name + "=";
   var ca = document.cookie.split(';');
@@ -62,6 +59,7 @@ function getCookie(name) {
   }
   return null;
 }
+
 function eraseCookie(name) {   
   document.cookie = name+'=; Max-Age=-99999999;';  
 }
@@ -70,74 +68,70 @@ addProductCardSpacer = function(element) {
   var waypoint = new Waypoint({
     element: element,
     handler: function(direction) {
-      //console.log('Product card spacer direction: ' + direction)
       if (direction == "up") { 
-        //console.log("Show previous product card");
         $(element).prev().addClass('show-product-title');
       }
       if (direction == "down") { 
-        //console.log("Hide all product cards");
         $('.product-card').removeClass('show-product-title');
       }
-      
     },
     offset: '50%'
   })
-  Waypoint.refreshAll();
 }
 
 addProductCard = function(element) {
   var waypoint = new Waypoint({
     element: element,
     handler: function(direction) {
-      //console.log('Product card direction: ' + direction)
       if (direction == "up") { 
-        //console.log("Hide all product cards");
         $('.product-card').removeClass('show-product-title');
       }
       if (direction == "down") { 
-        //console.log("Show this product card");
+        $('.product-card').removeClass('show-product-title');
         $(element).addClass('show-product-title');
       }
-      
     },
     offset: '50%'
   })
-  Waypoint.refreshAll();
 }
 
 $(".product-card").each(function(index, element) {
-  addProductCard(element);
+  var image = $(this).find('img');
+  var img = new Image();
+  img.src = image.attr('src');
+  img.src = image.attr('src');
+  img.onload = function() {
+    addProductCard(element);
+  }
 });
 $(".product-card-spacer").each(function(index, element) {
   addProductCardSpacer(element);
 });
-
-
 
 $('.product-list').infiniteScroll({
   path: '.next-button',
   append: '.product-list li',
   hideNav: '.pagination',
   status: '.page-load-status',
+  history: false,
   debug: false,
-  scrollThreshold: 800
+  scrollThreshold: 1600
 });
-
-
 
 $('.product-list').on( 'append.infiniteScroll', function( event, response, path, items ) {
-
-  $(".product-card").each(function(index, element) {
-    addProductCard(element);
+  $.each(items, function( index, value ) {
+    var element = $(value);
+    if (element.hasClass('product-card')) {
+      addProductCard(value);
+    }
+    else { 
+      addProductCardSpacer(value);
+    }
   });
-  $(".product-card-spacer").each(function(index, element) {
-    addProductCardSpacer(element);
-  });
-
+  setTimeout(function(){
+    Waypoint.refreshAll();
+  }, 1200);
 });
-
-
 
 var openOverlay = function(overlay_name) { 
   var scrollDiv = $('<div class="scrollbar-measure"></div>').appendTo(document.body)[0];
@@ -192,7 +186,7 @@ $('.close-product-option-overlay').click(function(e) {
 $('.flash-message-close').click(function(e) { 
   $('.flash-message').slideUp('fast', function() { 
     $('body').removeClass('has-flash-message');
-    setCookie('hide-announcement-message',hashedMessage,30);
+    setCookie('hide-announcement-message',hashedMessage,7);
   });
 })
 
@@ -214,10 +208,8 @@ $('.close-product-description-overlay').click(function(e) {
 $('body').addClass('pointer-device');
 
 window.addEventListener('touchstart', function onFirstTouch() {
-  // Add a body class
   $('body').addClass('touch-device');
   $('body').removeClass('pointer-device')
-  // we only need to know once that a human touched the screen, so we can stop listening now
   window.removeEventListener('touchstart', onFirstTouch, false);
 }, false);
 
@@ -278,10 +270,10 @@ var updateCursor = function() {
   if ($('body').hasClass('show-cursor')) {
     if ($('.arrow').length) { 
       var $arrow = $('.arrow');
-      var cursorWidth = $('.arrow').outerWidth() /2 ;
+      var cursorWidth = $('.arrow').outerWidth() / 2;
       var cursorHeight = $('.arrow').outerHeight() / 2;
       $('.arrow').offset({
-        'left': getMouseX() - cursorWidth,
+        'left': getMouseX(),
         'top': getMouseY() - cursorHeight
       });
     }
@@ -313,27 +305,23 @@ $('.return-home-link').click(function(e) {
   location.href = "/";
 })
 
-if ($("body").attr("id") != "cart") {
-  cartShowing = false;
-  $(document).on("click", ".cart-link", function(e) {
-    if (!inPreview) { 
-      e.preventDefault();
-      var currentURL = window.location.href;
-      var lastPart = currentURL.substr(currentURL.lastIndexOf('/') + 1);
-      if (lastPart != 'cart') {
-        showCart();
-      }
-    }
-  }).on( 'click','.close-cart-overlay', function() {
-    hideCart();
-  });
-}
-else { 
-  $(document).on("click", ".close-cart-overlay", function(e) {
-    location.href = "/";
-  });
-}
 
+$(document).on("click", ".cart-link", function(e) {
+  if (!inPreview) { 
+    e.preventDefault();
+    var currentURL = window.location.href;
+    var lastPart = currentURL.substr(currentURL.lastIndexOf('/') + 1);
+    if (lastPart != 'cart') {
+      showCart();
+    }
+  }
+});
+$(document).on('click', '.close-cart-overlay', function(e) {
+  if ($("body").attr("id") != "cart") {
+    e.preventDefault();
+    hideCart();
+  }
+});
 
 var hideCart = function() { 
   var $cart = $(".cart-holder");
@@ -359,7 +347,7 @@ var showCart = function() {
   });
 }
 
-function tkObjectFit() {
+var productImageFit = function() {
   var productImagesElement = $('.product-images')[0];
   var objectFit = getComputedStyle( productImagesElement, ':before' ).content;
   if (objectFit == 'none') { 
@@ -374,7 +362,9 @@ function tkObjectFit() {
     });
   }
 }
-tkObjectFit();
+if ($('.product-images').length) { 
+  productImageFit();
+}
 
 productImages = $('.multiple-product-images');
 desktopProductImagesOptions = {
@@ -383,7 +373,7 @@ desktopProductImagesOptions = {
   dragThreshold: 8,
   imagesLoaded: true,
   setGallerySize: true,
-  adaptiveHeight: false
+  adaptiveHeight: true
 }
 productImages.flickity(desktopProductImagesOptions);
 
