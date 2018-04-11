@@ -313,11 +313,6 @@ $(document).on('keyup',function(e) {
   }
 });
 
-$('.return-home-link').click(function(e) { 
-  location.href = "/";
-})
-
-
 $(document).on("click", ".cart-link", function(e) {
   if (!inPreview) { 
     e.preventDefault();
