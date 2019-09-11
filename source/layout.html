@@ -3,7 +3,7 @@
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui' name='viewport'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
@@ -29,7 +29,7 @@
             </div>
           </a>
         </div>
-        
+
         <div class="header-center">
           {% if page.full_url contains '/products' or page.full_url contains '/category' or page.permalink == 'home' %}
             <div class="products-page-title">
@@ -53,7 +53,7 @@
             <div class="product-page-title" data-cursor-action="{{ cursor_action }}">{{ page.name }}</div>
           {% endif %}
         </div>
-        
+
         <div class="header-right">
           <div class="open-cart">
             <a class="cart-link grow-cursor{% if cart.item_count == 0 %} hidden{% endif %}" href="/cart" title="View Cart">{{ cart.item_count }}</a>
@@ -65,7 +65,14 @@
 
       <div class="secondary-header">
         {% if page.full_url contains '/product/' %}
-          <div class="product-page-subtitle">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
+          {% capture product_pricing %}
+            {% if product.variable_pricing %}
+              {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+            {% else %}
+              {{ product.default_price | money: theme.money_format }}
+            {% endif %}
+          {% endcapture %}
+          <div class="product-page-subtitle">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product_pricing }}</div>
         {% else %}
           {% if theme.logo != blank %}
             <a class="store-link grow-cursor" href="/" title="{{ store.name | escape }}"><img alt="{{ store.name | escape }}" class="store-logo" src="{{ theme.images.logo.url | constrain: 1000, 240 }}"></a>
@@ -76,10 +83,10 @@
 
       </div>
     </header>
-    
+
     <div class="main">
       {% if page.category == 'custom' or page.permalink == 'contact' %}
-      
+
         <div class="custom-page custom-page-content">
           <h1 class="custom-page-title">{{ page.name }}</h1>
           {{ page_content | paragraphs }}
@@ -90,10 +97,10 @@
       {% endif %}
       <div class="dark-overlay"></div>
     </div>
-    
-    
-    
-    
+
+
+
+
     {% if page.permalink == 'home' or page.permalink == 'product' %}
       <div class="intro-overlay">
         <div class="intro-text">
@@ -122,10 +129,10 @@
             </button>
           </div>
           <div class="overlay-title">Select Category</div>
-          
+
           <div class="header-placeholder">&nbsp;</div>
         </div>
-        
+
         <div class="overlay-content centered-content">
           {% if categories.active != blank %}
             <ul class="categories-list">
@@ -138,8 +145,8 @@
         </div>
       </div>
     {% endif %}
-    
-    {% if page.permalink == 'home' or page.permalink == 'products' or page.category == 'custom' or page.permalink == 'contact' %} 
+
+    {% if page.permalink == 'home' or page.permalink == 'products' or page.category == 'custom' or page.permalink == 'contact' %}
       <div class="full-screen-overlay page-nav-overlay">
         <div class="header overlay-header">
           <div class="header-left">
@@ -151,10 +158,10 @@
             </button>
           </div>
           <div class="overlay-title">&nbsp;</div>
-          
+
           <div class="header-placeholder">&nbsp;</div>
         </div>
-        
+
         <div class="overlay-content centered-content">
           <div class="page-nav-menu">
             <ul class="pages-links link-list">
@@ -164,35 +171,35 @@
               {% endfor %}
               <li class="grow-cursor"><a href="/contact" title="Contact">Contact</a></li>
             </ul>
-          
+
             {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
               <ul class="social-links link-list">
                 {% if theme.instagram_url != blank %}
                   <li><a class="grow-cursor" target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
                 {% endif %}
-                
+
                 {% if theme.twitter_url != blank %}
                   <li><a class="grow-cursor" target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
                 {% endif %}
-                
+
                 {% if theme.facebook_url != blank %}
                   <li><a class="grow-cursor" target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
                 {% endif %}
-        
+
                 {% if theme.pinterest_url != blank %}
                   <li><a class="grow-cursor" target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
                 {% endif %}
-                
+
                 {% if theme.tumblr_url != blank %}
                   <li><a class="grow-cursor" target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
                 {% endif %}
-                
+
                 {% if store.website != blank %}
                   <li><a class="grow-cursor" href="{{ store.website }}">Back to site</a></li>
                 {% endif %}
               </ul>
             {% endif %}
-    
+
             <div class="credit grow-cursor">{{ bigcartel_credit }}</div>
           </div>
         </div>
@@ -204,7 +211,7 @@
         <div class="cursor-text-caption">View</div>
       </div>
     </div>
-    
+
     {% if theme.announcement_message_text != blank %}
       <div class="flash-message">
         <div class="flash-message-text">{{ theme.announcement_message_text }}</div>
@@ -213,8 +220,8 @@
         </div>
       </div>
     {% endif %}
-    
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ 'api' | theme_js_url }}"></script>
     <script>
       var formatMoney = Format.money;
@@ -230,5 +237,11 @@
       };
     </script>
     <script src="{{ theme | theme_js_url }}"></script>
+    {% if page.full_url contains '/product/' %}
+      <script>
+        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+        Product.find('{{ product.permalink }}', processProduct)
+      </script>
+    {% endif %}
   </body>
 </html>
