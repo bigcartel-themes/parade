@@ -1,3 +1,17 @@
+{% capture product_pricing %}
+  {% if product.variable_pricing %}
+    {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+  {% else %}
+    {{ product.default_price | money: theme.money_format }}
+  {% endif %}
+{% endcapture %}
+{% capture overlay_title %}
+  {% if product.has_option_groups %}
+    Select {{ product.option_groups.count | pluralize: 'Option', 'Options' }}
+  {% else %}
+    Select Option
+  {% endif %}
+{% endcapture %}
 <div class="product-images {% if product.images.size > 1 %}multiple-product-images{% else %}single-product-image{% endif %}">
   {% for image in product.images %}
     <div class="product-image {{ theme.product_image_display }}">
@@ -17,25 +31,46 @@
           </div>
         </button>
       </div>
-      <div class="overlay-title">Select Option — {{ product.default_price | money: theme.money_format }}</div>
+
+      <div class="overlay-title">{{ overlay_title }} — {{ product_pricing }}</div>
       <div class="header-placeholder">&nbsp;</div>
     </div>
-    
+
     <div class="overlay-content centered-content">
-      <form action="/cart" class="product-form" method="post">
+      <form action="/cart" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" method="post">
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
-          <input type="hidden" name="[cart][add][id]" id="option" class="hidden-product-option">
-          <ul class="options-list">
-            {% for option in product.options_in_stock %}
-              <li class="options-link option-item grow-cursor" data-option-id="{{ option.id }}" data-option-price="{{ option.price | money: theme.money_format | strip_html }}">
-                {{ option.name }} {% if option.price != product.default_price %}— {{ option.price | money: theme.money_format }}{% endif %}
-              </li>
+          <input type="hidden" name="cart[add][id]" id="option">
+          {% if product.has_option_groups %}
+            {% for option_group in product.option_groups %}
+              <div class="product-option-group">
+                <div class="product-option-group-title">Select {{ option_group.name }}</div>
+                <ul class="options-list product-option-value-list product_option_group" data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                  {% for value in option_group.values %}
+                    <li class="option-item product-option-item" data-option-id="{{ value.id }}" data-name="{{ value.name | escape }}">
+                      <input class="product-option-value-radio" tabindex="0" type='radio' value='{{ value.id }}' data-name="{{ value.name | escape }}" name='option_group_{{ option_group.id }}' id="option_value_{{ value.id }}" />
+                      <label class="product-option-value-label" for='option_value_{{ value.id }}'>{{ value.name }}</label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
             {% endfor %}
-          </ul>
+          {% else %}
+            <div class="product-options">
+              <ul class="options-list" data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                {% for option in product.options %}
+                  <li class="option-item product-option-item" data-option-id="{{ option.id }}" data-name="{{ option.name | escape }}" {% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>
+                    <input class="product-option-value-radio" data-price="{{ option.price }}" tabindex="0" type='radio' value='{{ option.id }}' data-name="{{ option.name | escape }}" name="product_{{ product.id }}" id="option_value_{{ option.id }}" />
+                    <label class="product-option-value-label" for='option_value_{{ option.id }}'>{{ option.name }}</label>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
         {% endif %}
         {{ product | product_quantity_input, 1, 'product-quantity', 'product-quantity' }}
+        <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-adding-text="Adding..." data-added-text="Added!" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
       </form>
     </div>
   </div>
@@ -52,7 +87,7 @@
 {% endcase %}
 
 <div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
-<div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product.default_price | money: theme.money_format }}</div>
+<div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product_pricing }}</div>
 
 
 {% if product.description != blank %}
@@ -68,7 +103,7 @@
     </button>
   {% else %}
     <button class="button select-option-button product-page-button" type="submit">
-      <span class="status-text">Select Option</span>
+      <span class="status-text">{{ overlay_title }}</span>
     </button>
   {% endif %}
 {% endif %}
