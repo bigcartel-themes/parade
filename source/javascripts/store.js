@@ -389,8 +389,6 @@ $(window).on('resize', function() {
 });
 
 
-
-/* NEW CODE */
 $('.product-options .product-option-value-radio').on('click',function() {
   if (!$(this).parent().attr('disabled')) {
     var option_price = $(this).attr("data-price");
@@ -403,9 +401,6 @@ $('.product-options .product-option-value-radio').on('click',function() {
     enableAddButton(option_price);
   }
 });
-
-
-
 
 
 $('.product-form').submit(function(e) {
