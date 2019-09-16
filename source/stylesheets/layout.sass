@@ -2,14 +2,14 @@
 
 *
   box-sizing: border-box
-  
+
 html
   -webkit-tap-highlight-color: rgba(0,0,0,0)
   height: 100%
   min-height: 100%
   position: relative
   width: 100%
-  
+
 body
   background-color: $background-color
   color: $text-color
@@ -21,21 +21,21 @@ body
   margin: 0
   padding: 0
   width: 100%
-  
-  &.show-cursor 
+
+  &.show-cursor
     cursor: none !important
-  	
+
     *
       cursor: none !important
-    
+
   &#product
     background-color: $product-page-background-color
     color: $product-page-text-color
-    
+
     .cart-link
       background-color: $product-page-text-color
       color: $product-page-background-color
-    
+
     &>header .hamburger span
       background-color: $product-page-text-color
 
@@ -51,44 +51,44 @@ body
       +align-items(center)
       +justify-content(center)
       height: 100%
-    
+
     h1
       font-size: 56px
-      
+
       @media screen and (max-width: $break-small)
         font-size: 32px
-      
+
     p
       font-size: 24px
-      
+
       @media screen and (max-width: $break-small)
         font-size: 18px
-      
+
     .maintenance-social-links
       font-size: 16px
-      
+
       @media screen and (max-width: $break-small)
         font-size: 14px
-      
+
       li
         display: inline-block
-        
+
         @media screen and (max-width: $break-small)
           display: block
           margin-bottom: 10px
-      
+
       a
         cursor: pointer !important
         display: block
         padding: 4px 10px
-        
+
 a
   color: $text-color
   text-decoration: none
 
 h1, h2, h3, h4, h5, h6
   font-weight: normal
-  
+
 input, textarea
   appearance: none
   background-color: $background-color
@@ -100,15 +100,15 @@ input, textarea
   font-size: 15px
   padding: 12px 0
   width: 100%
-  
+
   &:active, &:focus
     outline: none
-  
+
 ol, ul
   list-style: none
   margin: 0
   padding: 0
-    
+
 .header
   background-color: transparent
   padding: 50px
@@ -116,13 +116,13 @@ ol, ul
   top: 0
   width: 100%
   z-index: 97
-  
+
   @media screen and (max-width: $break-small)
     padding: 20px
-  
+
   &.overlay-header
     position: relative
-  
+
   .primary-header
     +flexbox
     +align-items(center)
@@ -132,21 +132,21 @@ ol, ul
   .secondary-header
     margin: 0 auto
     text-align: center
-  
+
   .header-center
     text-align: center
-    
+
   .store-link
     display: inline-block
     font-size: 56px
     line-height: 1.2em
-    
+
     @media screen and (max-width: $break-medium)
       font-size: 48px
-    
+
     @media screen and (max-width: $break-small)
       font-size: 32px
-    
+
   .cart-link
     background: $text-color
     border-radius: 100%
@@ -158,45 +158,45 @@ ol, ul
     line-height: 40px
     text-align: center
     width: 40px
-    
+
     @media screen and (max-width: $break-small)
       height: 32px
       line-height: 32px
       width: 32px
-    
+
     &.expanded
       +animation(growUp 1.5s .1s)
-    
+
     &.hidden
       opacity: 0
       visibility: hidden
-      
+
 .has-flash-message > header
   +transition(0.2s padding ease-out)
   padding-top: 100px
-  
+
   &.smaller
     padding-top: 50px
-    
+
     @media screen and (max-width: $break-small)
       padding-top: 20px
 
 .store-logo
   max-height: 120px
-  
+
   @media screen and (max-width: $break-small)
     max-height: 80px
-        
+
 @keyframes growUp
   0%
     +transform(scale(1))
-  
+
   50%
     +transform(scale(1.5))
-  
+
   100%
     +transform(scale(1))
-       
+
 #contact .secondary-header, .custom .secondary-header
   position: relative
   margin: 0 auto
@@ -206,7 +206,7 @@ ol, ul
   display: block
   font-family: $secondary-font
   font-size: 16px
-  
+
   @media screen and (max-width: $break-small)
     font-size: 14px
 
@@ -221,21 +221,21 @@ ol, ul
   padding: 0
   position: relative
   width: 32px
-  
+
   &.open-page-nav
     display: none
-  
+
   div
     height: 32px
     position: relative
     top: 12px
     width: 32px
-    
+
     @media screen and (max-width: $break-small)
       height: 24px
       top: 8px
       width: 24px
-    
+
   span
     +transform(rotate(0deg))
     +transition(.3s all)
@@ -246,38 +246,38 @@ ol, ul
     width: 100%
     opacity: 1
     left: 0
-    
+
     &:nth-child(1)
       top: 0px
 
     &:nth-child(2)
       top: 8px
-      
+
   &.is-active
     span:nth-child(1)
       +transform(rotate(-45deg))
       top: 4px
-		
+
     span:nth-child(2)
       +transform(rotate(45deg))
       top: 4px
 
 .return-icon
-  fill: $product-page-text-color 
+  fill: $product-page-text-color
   height: 30px
   width: 30px
-  
+
   @media screen and (max-width: $break-small)
     height: 24px
     width: 24px
-  
+
 #home, #products
   .open-page-nav
     display: block
 
   .return-home-link
     display: none
-    
+
 #contact, .custom
   .open-page-nav
     display: block
@@ -291,26 +291,26 @@ ol, ul
   padding: 50px
   position: relative
   width: 100%
-    
+
   @media screen and (max-width: $break-small)
     padding: 50px 20px
-  
+
 .page-nav-menu
   flex: 1 0 200px
-  
+
   @media screen and (max-width: $break-medium)
     flex: none
     width: 100%
-  
+
 @media screen and (max-width: $break-medium)
   .main > .page-nav-menu
     display: none
-  
+
 .custom .main, #contact .main
   +flexbox
   font-size: 24px
   line-height: 40px
-  
+
   @media screen and (max-width: $break-medium)
     padding-top: 0
 
@@ -320,54 +320,54 @@ ol, ul
   line-height: 1.2em
   margin-bottom: 40px
   text-align: center
-  
+
   @media screen and (max-width: $break-small)
     font-size: 24px
-    
+
 .custom-page-content
   font-family: $secondary-font
   margin: 0 auto
   max-width: 960px
   padding: 0 60px
   width: 100%
-  
+
   @media screen and (max-width: $break-medium)
     max-width: 100%
     padding: 0
-    
+
   @media screen and (max-width: $break-small)
     font-size: 18px
 
-.custom-page    
+.custom-page
   img, iframe
     display: block
     max-width: 100%
-    
+
   a
     text-decoration: underline
-    
+
   p
     margin: 0 0 1em 0
-  
+
   ol, ul
     list-style: inherit
     margin: 1em 0
     padding: 0 0 0 25px
-    
+
 .empty-container
   flex: 1 0 200px
-  
+
   @media screen and (max-width: $break-medium)
     display: none
 
 .wrapper
   padding-left: 50px
   padding-right: 50px
-  
+
   @media screen and (max-width: $break-small)
     padding-left: 20px
     padding-right: 20px
-  
+
 .intro-overlay
   +flexbox
   +align-items(center)
@@ -383,15 +383,15 @@ ol, ul
   top: 0
   width: 100%
   z-index: 99
-  
+
   @media screen and (max-width: $break-small)
     font-size: 40px
     line-height: 52px
     padding: 0 20px
-  
+
   &.preload
     background-color: $background-color
-  
+
   .intro-text
     display: none
     text-align: center
@@ -406,7 +406,7 @@ ol, ul
   opacity: 0
   height: 120px
   width: 120px
-    
+
 .show-cursor .cursor
   background-color: $button-background-color
   border-radius: 50%
@@ -424,22 +424,22 @@ ol, ul
     font-size: 0px
     line-height: 20px
     opacity: 0
-  
+
   &.expanded
     +transform(scale(1))
     +transition(height .2s ease-in-out width .2s ease-in-out)
-    
+
     .cursor-text
       font-size: 16px
       opacity: 1
-      
+
   &.small-expanded
     +transform(scale(.15))
     +transition(height .2s ease-in-out width .2s ease-in-out)
 
 .arrow
   display: none
-  
+
 .show-cursor .arrow
   height: 60px
   width: 60px
@@ -447,7 +447,7 @@ ol, ul
   pointer-events: none
   display: none
   position: absolute
-  
+
   svg
     fill: $button-background-color
     height: 60px
@@ -464,11 +464,11 @@ ol, ul
   visibility: hidden
   width: 100%
   z-index: 98
-  
+
   &.visible
     opacity: 1
     visibility: visible
-    
+
 .full-screen-overlay
   -webkit-overflow-scrolling: touch
   +transition(all .5s cubic-bezier(.25,.1,.25,1))
@@ -479,24 +479,25 @@ ol, ul
   left: 0
   opacity: 0
   overflow: auto
+  padding-bottom: 140px
   position: fixed
   top: 0
   width: 100%
   visibility: hidden
   z-index: 98
-  
+
   &.show
     opacity: 1
     visibility: visible
-    
+
   .hamburger
     margin-right: auto
-    
+
   .overlay-title
     font-family: $secondary-font
     font-size: 16px
     text-align: center
-    
+
   .overlay-content
     +flexbox
     margin: 0 auto
@@ -505,11 +506,11 @@ ol, ul
 
     @media screen and (max-width: $break-small)
       padding: 20px
-    
-    &.centered-content 
+
+    &.centered-content
       +justify-content(center)
       max-width: 800px
-    
+
 .overlay-header
   +flexbox
   +justify-content(space-between)
@@ -522,19 +523,19 @@ ol, ul
 .header-placeholder
   height: 40px
   width: 40px
-  
+
 .categories-list, .link-list
   font-size: 32px
   line-height: 48px
   text-align: center
-  
+
   > li
     margin-bottom: 16px
-  
+
   @media screen and (max-width: $break-small)
     font-size: 24px
     line-height: 40px
-    
+
     .category-link
       margin-bottom: 12px
 
@@ -543,20 +544,20 @@ ol, ul
   font-size: 14px
   line-height: 24px
   margin: 32px 0 0
-  
+
 .credit
   font-family: $secondary-font
   font-size: 10px
   line-height: 14px
   margin-top: 32px
   text-align: center
-  
+
 .scrollbar-measure
   height: 100px
   overflow: scroll
   position: absolute
   top: -9999px
-  
+
 .button
   +all-transitions
   appearance: none
@@ -573,13 +574,17 @@ ol, ul
   outline: none
   text-align: center
   width: 100%
-  
-  &:hover, &:active
+
+  &:disabled, &.disabled
+    opacity: .25
+    cursor: not-allowed
+
+  &:hover, &:focus
     opacity: .7
 
 .flash-message
   display: none
-     
+
 .has-flash-message .flash-message
   +flexbox
   +align-items(center)
@@ -594,32 +599,32 @@ ol, ul
   top: 0
   width: 100%
   z-index: 97
-  
+
   @media screen and (max-width: $break-small)
     font-size: 14px
     padding: 14px 25px
-  
+
   .flash-message-text
     text-align: center
     width: calc(100% - 100px)
-    
+
     @media screen and (max-width: $break-small)
       width: calc(100% - 50px)
-  
+
   .flash-message-close
     +transform(translateY(-50%))
     position: absolute
     right: 50px
     top: 50%
-    
+
     @media screen and (max-width: $break-small)
       right: 20px
-    
+
     svg
       fill: $announcement-text-color
       height: 14px
       width: 14px
-      
+
 
 ul.errors
   color: $error-text
@@ -629,9 +634,9 @@ ul.errors
   list-style: none
   margin-bottom: 40px
   text-align: center
-  
+
   li
     margin-bottom: 10px
-  
+
   &.home-errors
     margin-bottom: 100px

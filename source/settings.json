@@ -1,6 +1,6 @@
 {
   "name": "Parade",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "images": [
     {
       "variable": "logo",
@@ -95,6 +95,14 @@
       ],
       "default": "sign",
       "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "twitter_url",
