@@ -575,11 +575,21 @@ ol, ul
   text-align: center
   width: 100%
 
+  &.minimal-button
+    background: none
+    color: $text-color
+    border: none
+    font-size: 15px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      text-decoration: underline
+
   &:disabled, &.disabled
     opacity: .25
     cursor: not-allowed
 
-  &:hover, &:focus
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
     opacity: .7
 
 .flash-message

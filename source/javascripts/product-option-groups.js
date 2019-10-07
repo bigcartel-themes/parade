@@ -20,6 +20,16 @@ function processProduct(product) {
       $('li[disabled-type="sold-out"]').addClass('hidden');
     }
   }
+  $('.reset-selection-button').on('click', function() {
+    disableAddButton("add-to-cart");
+    $(this).hide();
+    $('.product-option-value-list input[type="radio"]').each(function(index,element) {
+      if (element.value > 0) {
+        enableOptionValue($(element));
+      }
+    });
+    setInitialProductOptionStatuses(product);
+  })
 }
 function createCartesianProductOptions(product) {
   product_option_groups = [];
@@ -60,11 +70,11 @@ function setInitialProductOptionStatuses(product) {
       }
     }
     dropdown_select = $(".product-option-item[data-option-id='" + option_group_value_id + "']");
-    if (num_options === 0 || product_iterator === num_sold_out) {
+    if (num_options === 0 || product_iterator === num_sold_out || num_options === num_sold_out) {
       if (num_options === 0) {
         disable_type = "unavailable";
       }
-      if (product_iterator === num_sold_out) {
+      if (product_iterator === num_sold_out || num_options === num_sold_out) {
         disable_type = "sold-out";
       }
       disableOptionValue(dropdown_select,disable_type);
@@ -111,11 +121,11 @@ function processAvailableDropdownOptions(product, changed_dropdown, changed_valu
             }
           }
           dropdown_select = $(".product-option-value-radio[value='" + option_group_value.id + "']");
-          if (num_options === 0 || product_iterator === num_sold_out) {
+          if (num_options === 0 || product_iterator === num_sold_out || num_options === num_sold_out) {
             if (num_options === 0) {
               disable_type = "unavailable";
             }
-            if (product_iterator === num_sold_out) {
+            if (product_iterator === num_sold_out || num_options === num_sold_out) {
               disable_type = "sold-out";
             }
             disableOptionValue(dropdown_select,disable_type);
@@ -175,11 +185,11 @@ function processAvailableDropdownOptions(product, changed_dropdown, changed_valu
             }
           }
           dropdown_select = $(".product-option-value-radio[value='" + option_group_value.id + "']");
-          if (num_options === 0 || product_iterator === num_sold_out) {
+          if (num_options === 0 || product_iterator === num_sold_out || num_options === num_sold_out) {
             if (num_options === 0) {
               disable_type = "unavailable";
             }
-            if (product_iterator === num_sold_out) {
+            if (product_iterator === num_sold_out || num_options === num_sold_out) {
               disable_type = "sold-out";
             }
             disableOptionValue(dropdown_select,disable_type);
@@ -236,6 +246,9 @@ function processAvailableDropdownOptions(product, changed_dropdown, changed_valu
       if (!product_option.sold_out && product_option.id > 0) {
         $('#option').val(product_option.id);
         enableAddButton(product_option.price);
+        if (num_option_groups > 1) {
+          $('.reset-selection-button').fadeIn('fast');
+        }
       }
       else {
         disableAddButton("sold-out");
