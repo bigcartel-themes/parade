@@ -22,6 +22,7 @@ function processProduct(product) {
   }
   $('.reset-selection-button').on('click', function() {
     disableAddButton("add-to-cart");
+    $('#option').val(0);
     $(this).hide();
     $('.product-option-value-list input[type="radio"]').each(function(index,element) {
       if (element.value > 0) {
