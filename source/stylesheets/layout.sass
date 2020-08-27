@@ -97,7 +97,7 @@ input, textarea
   border-radius: 0
   color: $text-color
   font-family: $secondary-font
-  font-size: 15px
+  font-size: 16px
   padding: 12px 0
   width: 100%
 
@@ -153,16 +153,16 @@ ol, ul
     color: $background-color
     display: block
     font-family: $secondary-font
-    height: 40px
-    font-size: 12px
-    line-height: 40px
+    height: 44px
+    font-size: 14px
+    line-height: 44px
     text-align: center
-    width: 40px
+    width: 44px
 
     @media screen and (max-width: $break-small)
-      height: 32px
-      line-height: 32px
-      width: 32px
+      height: 36px
+      line-height: 36px
+      width: 36px
 
     &.expanded
       +animation(growUp 1.5s .1s)
@@ -233,7 +233,6 @@ ol, ul
 
     @media screen and (max-width: $break-small)
       height: 24px
-      top: 8px
       width: 24px
 
   span
@@ -493,6 +492,9 @@ ol, ul
   .hamburger
     margin-right: auto
 
+    @media screen and (max-width: $break-small)
+      top: -4px
+
   .overlay-title
     font-family: $secondary-font
     font-size: 16px
@@ -541,16 +543,22 @@ ol, ul
 
 .social-links
   font-family: $secondary-font
-  font-size: 14px
+  font-size: 16px
   line-height: 24px
   margin: 32px 0 0
 
+  @media screen and (max-width: $break-small)
+    font-size: 14px
+
 .credit
   font-family: $secondary-font
-  font-size: 10px
+  font-size: 14px
   line-height: 14px
   margin-top: 32px
   text-align: center
+
+  @media screen and (max-width: $break-small)
+    font-size: 12px
 
 .scrollbar-measure
   height: 100px
