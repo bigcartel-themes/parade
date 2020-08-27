@@ -71,7 +71,9 @@
         {% endif %}
         {{ product | product_quantity_input, 1, 'product-quantity', 'product-quantity' }}
         <button class="button add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-adding-text="Adding..." data-added-text="Added!" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
-        {{ store | instant_checkout_button: 'dark', '44px' }}
+        {% unless product.has_default_option %}
+          {{ store | instant_checkout_button: 'dark', '44px' }}
+        {% endunless %}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
             <button class="button minimal-button reset-selection-button grow-cursor" title="Reset selection" type="reset">Reset selection</button>
@@ -92,27 +94,32 @@
     {% assign product_status = 'Coming Soon' %}
 {% endcase %}
 
-<div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
-<div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product_pricing }}</div>
+<div class="product-page-content">
+  <div class="mobile-product-title show-mobile-portrait">{{ page.name }}</div>
+  <div class="mobile-product-subtitle show-mobile-portrait">{% if product_status != blank %}{{ product_status }} — {% endif %}{{ product_pricing }}</div>
 
-
-{% if product.description != blank %}
-  <div class="product-description">
-    {{ product.description | paragraphs }}
-  </div>
-{% endif %}
-
-{% if product.status == 'active' %}
-  {% if product.has_default_option %}
-    <button class="button add-to-cart-button product-page-button" type="submit" data-adding-text="Adding..." data-added-text="Added!">
-      <span class="status-text">Add to Cart</span>
-    </button>
-  {% else %}
-    <button class="button select-option-button product-page-button" type="submit">
-      <span class="status-text">{{ overlay_title }}</span>
-    </button>
+  {% if product.status == 'active' %}
+    <div class="product-page-buttons">
+      {% if product.has_default_option %}
+        <button class="button add-to-cart-button product-page-button" type="submit" data-adding-text="Adding..." data-added-text="Added!">
+          <span class="status-text">Add to Cart - {{ product.default_price | money: theme.money_format }}</span>
+        </button>
+        {{ store | instant_checkout_button: 'dark', '44px' }}
+      {% else %}
+        <button class="button select-option-button product-page-button" type="submit">
+          <span class="status-text">{{ overlay_title }}</span>
+        </button>
+      {% endif %}
+    </div>
   {% endif %}
-{% endif %}
+
+  {% if product.description != blank %}
+    <div class="product-description">
+      {{ product.description | paragraphs }}
+    </div>
+  {% endif %}
+</div>
+
 
 {% if product.images.size > 1 %}
   <div class="arrow arrow-previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 33.9"><path d="M46 16.2H2.9L18 1.1 17 0 1.1 15.9 0 17l1.1 1L17 33.9l1-1L2.9 17.7H46z"/></svg></div>
