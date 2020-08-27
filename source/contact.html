@@ -16,31 +16,31 @@
     <div class="contact-form-block contact-name">
       <label class="contact-label" for="name">Name</label>
       <div class="input-holder">
-        {{ contact | contact_input: 'name', tabindex: 1 }}
+        {{ contact | contact_input: 'name' }}
       </div>
     </div>
     <div class="contact-form-block contact-email">
       <label class="contact-label" for="email">Email</label>
       <div class="input-holder">
-        {{ contact | contact_input: 'email', tabindex: 2 }}
+        {{ contact | contact_input: 'email' }}
       </div>
     </div>
     <div class="contact-form-block contact-subject">
       <label class="contact-label" for="subject">Subject</label>
       <div class="input-holder">
-        {{ contact | contact_input: 'subject', tabindex: 3 }}
+        {{ contact | contact_input: 'subject' }}
       </div>
     </div>
     <div class="contact-form-block contact-message">
       <label class="contact-label" for="message">Message</label>
       <div class="input-holder">
-        {{ contact | contact_input: 'message', tabindex: 4 }}
+        {{ contact | contact_input: 'message' }}
       </div>
     </div>
     <div class="contact-form-block contact-captcha">
       <label class="contact-label" for="captcha">Spam check</label>
       <div class="input-holder captcha-holder">
-        {{ contact | contact_input: 'captcha', tabindex: 5 }} {{ contact.captcha }}
+        {{ contact | contact_input: 'captcha' }} {{ contact.captcha }}
         <div class="captcha-instructions">Enter the characters from the image</div>
       </div>
     </div>
