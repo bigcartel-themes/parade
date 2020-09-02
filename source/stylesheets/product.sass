@@ -2,6 +2,7 @@
 
 .product-page-title
   font-size: 32px
+  margin: 0
 
   @media screen and (max-width: $break-medium) and (orientation: portrait)
     display: none
@@ -98,48 +99,72 @@
     height: 2px
     width: 24px
 
-.multiple-product-images .flickity-prev-next-button
-  border-radius: 0
-  background: transparent
-  bottom: 0
-  height: 100%
-  top: 0
-  transform: none
-  width: 33%
-  z-index: 95
+.multiple-product-images
 
-  svg
-    display: none
-
-  &:hover
+  .flickity-prev-next-button
+    border-radius: 0
     background: transparent
+    bottom: 0
+    height: 100%
+    padding: 0
+    top: 0
+    transform: none
+    width: calc(50% - 150px)
+    z-index: 95
+
+    svg
+      display: none
+
+    &:hover
+      background: transparent
+
+    &.previous
+      left: 0
+
+    &.next
+      right: 0
 
 .touch-device .multiple-product-images .flickity-prev-next-button
   opacity: 0
   visibility: hidden
 
-.product-description
-  +transform(translateX(-50%))
-  font-family: $secondary-font
-  font-size: 24px
-  left: 50%
-  line-height: 40px
-  max-width: 900px
-  min-height: calc(100vh - 200px)
-  padding: 0 50px 200px
+.product-page-content
+  left: 0
+  min-height: calc(100vh - 100px)
+  padding: 0 50px
   position: absolute
-  top: calc(100vh + 200px)
+  top: calc(100vh + 100px)
   width: 100%
 
   @media screen and (max-width: $break-medium)
-    margin-top: 60px
+    position: relative
+    top: auto
+
+.product-page-button
+  display: block
+  width: 100%
+
+.product-page-buttons
+  margin: 0 auto 80px
+  max-width: 424px
+  text-align: center
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    margin-bottom: 40px
+
+.product-description
+  font-family: $secondary-font
+  font-size: 24px
+  line-height: 40px
+  margin: 0 auto
+  max-width: 800px
+  width: 100%
 
   @media screen and (max-width: $break-small)
     font-size: 18px
     line-height: 32px
     padding-bottom: 64px
-    position: relative
-    top: auto
 
   a
     color: $product-page-text-color
@@ -153,7 +178,6 @@
     list-style: inherit
     margin: 1em 0
     padding: 0 0 0 25px
-
 
 .options-list
   +flexbox
@@ -232,30 +256,6 @@
 .product-quantity
   display: none
 
-.product-page-button
-  display: none
-
-  @media screen and (max-width: $break-medium) and (orientation: portrait)
-    display: block
-    z-index: 97
-    position: fixed
-    top: auto
-    left: 0
-    bottom: 0
-    border: 0
-    font-size: 14px
-    width: 100%
-    border-radius: 0
-
-.touch-device .product-page-button
-  bottom: 0
-  display: block
-  font-size: 14px
-  left: 0
-  position: fixed
-  z-index: 97
-  width: 100%
-
 .show-mobile-portrait
   display: none
   padding: 0 50px
@@ -263,6 +263,7 @@
 
   @media screen and (max-width: $break-medium) and (orientation: portrait)
     display: block
+    margin-bottom: 40px
 
 .mobile-product-title
   font-size: 24px
@@ -295,3 +296,4 @@ button.reset-selection-button
 
 #instant-checkout-button
   margin-top: 12px
+  width: 100%

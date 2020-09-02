@@ -1,6 +1,6 @@
 {
   "name": "Parade",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "images": [
     {
       "variable": "logo",
@@ -64,7 +64,7 @@
     {
       "variable": "error_text_color",
       "label": "Error Text",
-      "default": "#AF5F55"
+      "default": "#841c0f"
     }
   ],
   "options": [

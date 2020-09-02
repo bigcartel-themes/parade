@@ -459,14 +459,6 @@ $('body')
   .on('mouseleave','.flickity-slider, .single-product-image', function() {
     $('.cursor').removeClass('expanded');
   })
-  .on('click','.flickity-slider, .single-product-image', function() {
-    if ($('.product-page-button').hasClass('add-to-cart-button')) {
-      $('.product-form').submit()[0];
-    }
-    else {
-      openOverlay('.product-option-overlay');
-    }
-  })
   .on( 'click','.dark-overlay', function() {
     hideCart();
   })

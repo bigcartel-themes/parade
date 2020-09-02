@@ -3,7 +3,7 @@
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
   </head>
@@ -12,7 +12,7 @@
     <header class="header header-wrapper layout-header">
       <div class="primary-header">
         <div class="header-left">
-          <a class="hamburger is-active return-home-link grow-cursor" href="/">
+          <a class="hamburger is-active return-home-link grow-cursor" href="/" title="Home">
             {% if page.full_url contains '/product/' %}
               <svg class="return-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M30 17.9c0-.6-.1-1.2-.2-1.8-.9-3.6-4.1-6.1-7.8-6.1H3.4l4.8-4.8L6.9 4 0 10.9l6.9 6.9 1.3-1.2-4.8-4.8h18.7c1.7 0 3.2.7 4.4 1.9 1.2 1.2 1.8 2.8 1.8 4.4 0 1.7-.7 3.2-1.9 4.4-1.2 1.1-2.7 1.8-4.3 1.8H16.4V26h5.8c4.3-.1 7.9-3.7 7.8-8.1z"/></svg>
             {% else %}
@@ -22,7 +22,7 @@
               </div>
             {% endif %}
           </a>
-          <a class="hamburger open-page-nav grow-cursor" href="#">
+          <a class="hamburger open-page-nav grow-cursor" href="#" title="Open menu">
             <div>
             	<span></span>
             	<span></span>
@@ -42,15 +42,7 @@
               {% endif %}
             </div>
           {% elsif page.full_url contains '/product/' %}
-            {% case product.status %}
-              {% when 'active' %}
-                {% if product.has_default_option %}
-                  {% assign cursor_action = 'Add to<br />Cart' %}
-                {% else %}
-                  {% assign cursor_action = 'Select<br />Option' %}
-                {% endif %}
-            {% endcase %}
-            <div class="product-page-title" data-cursor-action="{{ cursor_action }}">{{ page.name }}</div>
+            <h1 class="product-page-title">{{ page.name }}</h1>
           {% endif %}
         </div>
 
@@ -84,7 +76,7 @@
       </div>
     </header>
 
-    <div class="main">
+    <main class="main">
       {% if page.category == 'custom' or page.permalink == 'contact' %}
 
         <div class="custom-page custom-page-content">
@@ -96,7 +88,7 @@
         {{ page_content }}
       {% endif %}
       <div class="dark-overlay"></div>
-    </div>
+    </main>
 
 
 
