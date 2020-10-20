@@ -25,18 +25,16 @@
 .input-holder
   position: relative
 
-#captcha_image
-  height: 41px
-  position: absolute
-  right: 0
-  top: 0
-
 .contact-form-block
   margin-bottom: 56px
 
-.captcha-instructions
+  &.contact-message, &.contact-recaptcha
+    margin-bottom: 36px
+
+.recaptcha-instructions
   color: $text-color
   font-size: 14px
+  line-height: 1.5em
 
 .contact-sent
   text-align: center
